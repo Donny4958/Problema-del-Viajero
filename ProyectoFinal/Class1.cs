@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 namespace ProyectoFinal.Model
 {
@@ -77,6 +78,15 @@ namespace ProyectoFinal.Model
         public Dictionary<string, Nodo> ObtenerNodos()
         {
             return nodos;
+        }
+        public List<(int X, int Y)> ObtenerPosiciones()
+        {
+            var representacion = new List<(int X, int Y)>();
+            foreach (var nodo in nodos.Values)
+            {
+                representacion.Add((nodo.X, nodo.Y));
+            }
+            return representacion;
         }
 
         public string ObtenerRepresentacion()

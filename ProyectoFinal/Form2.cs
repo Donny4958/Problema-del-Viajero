@@ -57,11 +57,20 @@ namespace ProyectoFinal
             int nomx = Convert.ToInt32(numericUpDown1.Value);
             int nomy = Convert.ToInt32(numericUpDown1.Value);
             NombreCiudad = textBox1.Text;
+
             if (grafo.Existe(NombreCiudad))
             {
                 MessageBox.Show($"Ciudad '{NombreCiudad}' ya existe, intente otro nombre.", "Alta no exitosa");
+                return;
             }
-            else { 
+            var posiciones = grafo.ObtenerPosiciones();
+            if (posiciones.Any(p => p.X == nomx && p.Y == nomy))
+            {
+                MessageBox.Show($"Ya existe una ciudad en la posición X={nomx}, Y={nomy}.", "Alta no exitosa");
+                return;
+            }
+            else
+            { 
             MessageBox.Show($"Ciudad '{NombreCiudad}' agregada correctamente.", "Alta exitosa");
             grafo.AgregarNodo(NombreCiudad,nomx,nomy);
             grafota.AgregarNodo(NombreCiudad,nomx,nomy);

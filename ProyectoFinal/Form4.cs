@@ -13,11 +13,20 @@ namespace ProyectoFinal
 {
     public partial class Form4 : Form
     {
-        private Grafo grafo;
-        public Form4(Grafo grafoa)
+        private Grafo grafo; // Grafo para manejar ciudades y rutas
+        private Grafo grafota; // Grafo tiempo/auto
+        private Grafo grafoca; // Grafo costo/auto
+        private Grafo grafott; // Grafo tiempo/transporte
+        private Grafo grafoct; // Grafo costo/transporte
+        //textBox1 Nombre ciudad
+        public Form4(Grafo grafoa, Grafo grafotaa, Grafo grafocaa, Grafo grafottt, Grafo grafoctt)
         {
             InitializeComponent();
-            grafo = grafoa; // Asignamos el grafo pasado como parámetro
+            grafo = grafoa;
+            grafota = grafotaa;
+            grafoca = grafocaa;
+            grafott = grafottt;
+            grafoct = grafoctt;
         }
 
         private void Form4_Load(object sender, EventArgs e)
@@ -56,10 +65,41 @@ namespace ProyectoFinal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Cambio de datos (implementación futura)
-            MessageBox.Show("Funcionalidad de ruta mas corta no implementada aún.");
+            var Checado = revisarRadios();
+            MessageBox.Show(Checado.ObtenerRepresentacion());
         }
+        public Grafo revisarRadios() {
+            if (radioButton3.Checked)
+            {
+                return grafo;
+            }
+            else
+            {
+                if (radioButton1.Checked)
+                {
+                    if (radioButton4.Checked)
+                    {
+                     return grafota;
+                    }
+                    else
+                    {
+                        return grafoca;
+                    }
+                }
+                else
+                {
+                    if (radioButton4.Checked)
+                    {
+                        return grafott;                        
+                    }
+                    else
+                    {
+                        return grafoct;                        
+                    }
 
+                }
+            }            
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             // Cambio de datos (implementación futura)
