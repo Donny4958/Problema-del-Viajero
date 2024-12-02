@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{FEFDEBE7-7C3B-4769-91A2-69241EE198F2}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FEFDEBE7-7C3B-4769-91A2-69241EE198F2}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\dona\\documents\\github\\problema-del-viajero\\proyectofinal\\resource1.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{FEFDEBE7-7C3B-4769-91A2-69241EE198F2}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\resource1.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{FEFDEBE7-7C3B-4769-91A2-69241EE198F2}|ProyectoFinal\\ProyectoFinal.csproj|C:\\Users\\Dona\\Documents\\GitHub\\Problema-del-Viajero\\proyectofinal\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{FEFDEBE7-7C3B-4769-91A2-69241EE198F2}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FEFDEBE7-7C3B-4769-91A2-69241EE198F2}|ProyectoFinal\\ProyectoFinal.csproj|c:\\users\\dona\\documents\\github\\problema-del-viajero\\proyectofinal\\resource1.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{FEFDEBE7-7C3B-4769-91A2-69241EE198F2}|ProyectoFinal\\ProyectoFinal.csproj|solutionrelative:proyectofinal\\resource1.resx||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -37,12 +37,8 @@
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Resource1.resx",
               "DocumentMoniker": "C:\\Users\\Dona\\Documents\\GitHub\\Problema-del-Viajero\\ProyectoFinal\\Resource1.resx",
               "RelativeDocumentMoniker": "ProyectoFinal\\Resource1.resx",
@@ -61,14 +57,14 @@
               "RelativeDocumentMoniker": "ProyectoFinal\\Form1.cs",
               "ToolTip": "C:\\Users\\Dona\\Documents\\GitHub\\Problema-del-Viajero\\ProyectoFinal\\Form1.cs",
               "RelativeToolTip": "ProyectoFinal\\Form1.cs",
-              "ViewState": "AgIAAGcAAAAAAAAAAAAuwHAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAYwCYAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-02T22:19:32.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\Users\\Dona\\Documents\\GitHub\\Problema-del-Viajero\\ProyectoFinal\\Form1.cs",
               "RelativeDocumentMoniker": "ProyectoFinal\\Form1.cs",

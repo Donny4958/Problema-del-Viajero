@@ -5,6 +5,7 @@ namespace ProyectoFinal
 {
     public partial class Form1 : Form
     {
+        int zoom = 1;
         private Grafo grafo; // Grafo para manejar ciudades y rutas
         private Grafo grafota; // Grafo tiempo/auto
         private Grafo grafoca; // Grafo costo/auto
@@ -23,8 +24,6 @@ namespace ProyectoFinal
             grafott = new Grafo();
             grafoct = new Grafo();
             llenargrafos();
-            originalImage = Properties.Resources.Mochis; // Asignar la imagen del recurso
-            displayedImage = ResizeImage(originalImage, pictureBox2.Width, pictureBox2.Height);
         }
 
         private void ciudadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -36,10 +35,9 @@ namespace ProyectoFinal
 
 
         private void Form1_Load(object sender, EventArgs e)
-        { 
-            pictureBox2.Image = Properties.Resources.Mochis;
-            displayedImage = ResizeImage(originalImage, pictureBox2.Width, pictureBox2.Height);
-            pictureBox2.Image = displayedImage;
+        {
+            org=new PictureBox();
+            org.Image = pictureBox1.Image;
         }
 
         private void rutaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -79,29 +77,6 @@ namespace ProyectoFinal
             grafoComoTexto += grafoct.ObtenerRepresentacion();
             richTextBox1.Text = grafoComoTexto; // Mostrar en el TextBox
         }
-
-        private Bitmap ResizeImage(Image image, int width, int height)
-        {
-            var resized = new Bitmap(width, height);
-            using (var graphics = Graphics.FromImage(resized))
-            {
-                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                graphics.DrawImage(image, 0, 0, width, height);
-            }
-            return resized;
-        }
-
-
-
-
-
-
-
-
-
-
-
 
 
         public void llenargrafos()
@@ -148,7 +123,7 @@ namespace ProyectoFinal
             // Confirmar la operación
             MessageBox.Show("Nodos y conexiones creados exitosamente con pesos variables en todos los grafos.", "Operación exitosa");
         }
-        public void todosagregarNodos(string nom,int x, int y)
+        public void todosagregarNodos(string nom, int x, int y)
         {
             grafo.AgregarNodo(nom, x, y);
             grafota.AgregarNodo(nom, x, y);
@@ -157,7 +132,7 @@ namespace ProyectoFinal
             grafoct.AgregarNodo(nom, x, y);
 
         }
-        
+
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -168,35 +143,28 @@ namespace ProyectoFinal
         {
 
         }
+        Image ZoomPicture(Image img, Size size)
+        {
+            Bitmap bm = new Bitmap(img, Convert.ToInt32(img.Width * size.Width), Convert.ToInt32(img.Height * size.Height));
+            Graphics g = Graphics.FromImage(bm);
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            return bm;
+        }
+        PictureBox org;
 
         private void button2_Click(object sender, EventArgs e)
         {
-            zoomFactor += 0.1f;
-            ApplyZoom();
+            if (zoom < 10)
+            {
+                pictureBox1.Image = ZoomPicture(pictureBox1.Image, new Size(zoom + 1, zoom + 1));
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (zoomFactor > 0.1f) // Evitar zoom negativo o extremadamente pequeño
+            if (zoom > 0)
             {
-                zoomFactor -= 0.1f;
-                ApplyZoom();
-            }
-        }
-        private void ApplyZoom()
-        {
-            if (originalImage != null)
-            {
-                int newWidth = (int)(originalImage.Width * zoomFactor);
-                int newHeight = (int)(originalImage.Height * zoomFactor);
-                displayedImage = ResizeImage(originalImage, newWidth, newHeight);
-
-                // Ajustar la imagen en el PictureBox
-                pictureBox2.Image = displayedImage;
-
-                // Ajustar el tamaño del PictureBox si es necesario
-                pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
-                pictureBox2.Refresh();
+                pictureBox1.Image = ZoomPicture(pictureBox1.Image, new Size(zoom - 1, zoom - 1));
             }
         }
     }
