@@ -120,7 +120,8 @@ namespace ProyectoFinal
                 return grafo;
             }
             else
-            {
+            {                
+
                 if (radioButton1.Checked)
                 {
                     textBox1.Text = "Transporte Publico";
@@ -153,8 +154,52 @@ namespace ProyectoFinal
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            // Cambio de datos (implementación futura)
-            MessageBox.Show("Funcionalidad de ruta alterna no implementada aún.");
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+            textBox2.Clear();
+            var Checado = revisarRadios();
+            var origen = comboBox1.SelectedItem?.ToString();
+            var destino = comboBox2.SelectedItem?.ToString();
+            if (origen == null || destino == null && Checado != null)
+            {
+                MessageBox.Show("Seleccione un nodo de inicio y un nodo final.", "Error");
+                return;
+            }
+            try
+            {
+                var resultado = Checado.EncontrarRuta(origen, destino);
+
+                if (resultado.Distancia == int.MaxValue)
+                {
+                    MessageBox.Show($"No hay ruta entre {origen} y {destino}.");
+                }
+                else
+                {
+                    // Mostrar cada nodo en listBox1
+                    foreach (var nodo in resultado.Ruta)
+                    {
+                        listBox1.Items.Add(nodo);
+                    }
+
+                    // Mostrar el peso de cada arista en listBox2
+                    for (int i = 0; i < resultado.Ruta.Count - 1; i++)
+                    {
+                        string nodoActual = resultado.Ruta[i];
+                        string nodoSiguiente = resultado.Ruta[i + 1];
+
+                        // Buscar el peso entre nodoActual y nodoSiguiente
+                        var pesoArista = Checado.ObtenerVecinos(nodoActual)[nodoSiguiente];
+                        listBox2.Items.Add(pesoArista);
+                    }
+
+                    // Mostrar el peso total en textBox2
+                    textBox2.Text = resultado.Distancia.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -112,7 +112,7 @@ namespace ProyectoFinal
             grafo.AgregarArista("a", "b", 10);
             grafo.AgregarArista("b", "c", 15);
             grafo.AgregarArista("c", "d", 20);
-            grafo.AgregarArista("a", "d", 25);
+            grafo.AgregarArista("a", "d", 12);
             grafo.AgregarArista("d", "c", 30);
 
             // Tiempo en carro (grafota)

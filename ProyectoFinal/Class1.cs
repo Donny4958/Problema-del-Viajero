@@ -272,9 +272,50 @@ namespace ProyectoFinal.Model
 
             return (distancias[destino], ruta);
         }
+        public (int Distancia, List<string> Ruta) EncontrarRuta(string origen, string destino)
+        {
+            if (!nodos.ContainsKey(origen) || !nodos.ContainsKey(destino))
+            {
+                throw new ArgumentException("El nodo de origen o destino no existe.");
+            }
 
+            var visitados = new HashSet<string>();
+            var ruta = new List<string>();
+            int distanciaTotal = 0;
 
+            bool RutaEncontrada(string actual, int distanciaAcumulada)
+            {
+                ruta.Add(actual);
+                visitados.Add(actual);
 
+                if (actual == destino)
+                {
+                    distanciaTotal = distanciaAcumulada;
+                    return true;
+                }
+
+                foreach (var adyacente in nodos[actual].Adyacentes)
+                {
+                    if (!visitados.Contains(adyacente.Destino.Nombre))
+                    {
+                        if (RutaEncontrada(adyacente.Destino.Nombre, distanciaAcumulada + adyacente.Peso))
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                ruta.RemoveAt(ruta.Count - 1); // Retroceder si no se encuentra una ruta desde este nodo
+                return false;
+            }
+
+            if (RutaEncontrada(origen, 0))
+            {
+                return (distanciaTotal, ruta); // Retorna la distancia acumulada y la ruta encontrada
+            }
+
+            return (int.MaxValue, new List<string>()); // Retorna infinito y una lista vacía si no hay ruta
+        }
 
 
     }

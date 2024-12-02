@@ -117,10 +117,12 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
             radioButton1.Location = new Point(16, 49);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(80, 29);
             radioButton1.TabIndex = 24;
+            radioButton1.TabStop = true;
             radioButton1.Text = "Carro";
             radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -151,22 +153,22 @@
             // radioButton4
             // 
             radioButton4.AutoSize = true;
+            radioButton4.Checked = true;
             radioButton4.Location = new Point(7, 84);
             radioButton4.Name = "radioButton4";
             radioButton4.Size = new Size(97, 29);
             radioButton4.TabIndex = 25;
+            radioButton4.TabStop = true;
             radioButton4.Text = "Tiempo";
             radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton3
             // 
             radioButton3.AutoSize = true;
-            radioButton3.Checked = true;
             radioButton3.Location = new Point(7, 49);
             radioButton3.Name = "radioButton3";
             radioButton3.Size = new Size(108, 29);
             radioButton3.TabIndex = 24;
-            radioButton3.TabStop = true;
             radioButton3.Text = "Distancia";
             radioButton3.UseVisualStyleBackColor = true;
             // 
