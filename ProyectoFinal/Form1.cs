@@ -146,6 +146,7 @@ namespace ProyectoFinal
             // Confirmar la operación
             MessageBox.Show("Nodos y conexiones creados exitosamente con pesos variables en todos los grafos.", "Operación exitosa");
         }
+
     }
     
 }

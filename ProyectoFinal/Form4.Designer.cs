@@ -42,15 +42,13 @@
             button1 = new Button();
             button2 = new Button();
             listBox1 = new ListBox();
-            this.listBox2 = new ListBox();
+            listBox2 = new ListBox();
             label3 = new Label();
             label4 = new Label();
             label8 = new Label();
             label9 = new Label();
-            listBox7 = new ListBox();
-            listBox8 = new ListBox();
-            listBox9 = new ListBox();
             textBox1 = new TextBox();
+            textBox2 = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -119,12 +117,10 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
-            radioButton1.Checked = true;
             radioButton1.Location = new Point(16, 49);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(80, 29);
             radioButton1.TabIndex = 24;
-            radioButton1.TabStop = true;
             radioButton1.Text = "Carro";
             radioButton1.UseVisualStyleBackColor = true;
             // 
@@ -149,7 +145,6 @@
             radioButton5.Name = "radioButton5";
             radioButton5.Size = new Size(84, 29);
             radioButton5.TabIndex = 26;
-            radioButton5.TabStop = true;
             radioButton5.Text = "Costo";
             radioButton5.UseVisualStyleBackColor = true;
             // 
@@ -160,7 +155,6 @@
             radioButton4.Name = "radioButton4";
             radioButton4.Size = new Size(97, 29);
             radioButton4.TabIndex = 25;
-            radioButton4.TabStop = true;
             radioButton4.Text = "Tiempo";
             radioButton4.UseVisualStyleBackColor = true;
             // 
@@ -210,13 +204,13 @@
             // 
             // listBox2
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 25;
-            this.listBox2.Location = new Point(1075, 265);
-            this.listBox2.Margin = new Padding(4, 5, 4, 5);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new Size(108, 479);
-            this.listBox2.TabIndex = 13;
+            listBox2.FormattingEnabled = true;
+            listBox2.ItemHeight = 25;
+            listBox2.Location = new Point(1075, 265);
+            listBox2.Margin = new Padding(4, 5, 4, 5);
+            listBox2.Name = "listBox2";
+            listBox2.Size = new Size(108, 479);
+            listBox2.TabIndex = 13;
             // 
             // label3
             // 
@@ -258,36 +252,6 @@
             label9.TabIndex = 20;
             label9.Text = "TOTALES";
             // 
-            // listBox7
-            // 
-            listBox7.FormattingEnabled = true;
-            listBox7.ItemHeight = 25;
-            listBox7.Location = new Point(819, 785);
-            listBox7.Margin = new Padding(4, 5, 4, 5);
-            listBox7.Name = "listBox7";
-            listBox7.Size = new Size(108, 29);
-            listBox7.TabIndex = 21;
-            // 
-            // listBox8
-            // 
-            listBox8.FormattingEnabled = true;
-            listBox8.ItemHeight = 25;
-            listBox8.Location = new Point(964, 785);
-            listBox8.Margin = new Padding(4, 5, 4, 5);
-            listBox8.Name = "listBox8";
-            listBox8.Size = new Size(108, 29);
-            listBox8.TabIndex = 22;
-            // 
-            // listBox9
-            // 
-            listBox9.FormattingEnabled = true;
-            listBox9.ItemHeight = 25;
-            listBox9.Location = new Point(1109, 785);
-            listBox9.Margin = new Padding(4, 5, 4, 5);
-            listBox9.Name = "listBox9";
-            listBox9.Size = new Size(108, 29);
-            listBox9.TabIndex = 23;
-            // 
             // textBox1
             // 
             textBox1.Enabled = false;
@@ -296,20 +260,26 @@
             textBox1.Size = new Size(150, 31);
             textBox1.TabIndex = 24;
             // 
+            // textBox2
+            // 
+            textBox2.Enabled = false;
+            textBox2.Location = new Point(830, 779);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(150, 31);
+            textBox2.TabIndex = 25;
+            // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1307, 897);
+            Controls.Add(textBox2);
             Controls.Add(textBox1);
-            Controls.Add(listBox9);
-            Controls.Add(listBox8);
-            Controls.Add(listBox7);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(this.listBox2);
+            Controls.Add(listBox2);
             Controls.Add(listBox1);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -353,14 +323,12 @@
         private Label label7;
         private Label label8;
         private Label label9;
-        private ListBox listBox7;
-        private ListBox listBox8;
-        private ListBox listBox9;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private RadioButton radioButton5;
         private RadioButton radioButton4;
         private RadioButton radioButton3;
         private TextBox textBox1;
+        private TextBox textBox2;
     }
 }

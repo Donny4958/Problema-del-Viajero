@@ -19,7 +19,7 @@ namespace ProyectoFinal.Model
             Y = y;
             Adyacentes = new List<(Nodo, int)>();
         }
-
+        
         public void AgregarAdyacente(Nodo destino, int peso)
         {
             Adyacentes.Add((destino, peso));
@@ -79,6 +79,9 @@ namespace ProyectoFinal.Model
         {
             return nodos;
         }
+        
+
+
         public List<(int X, int Y)> ObtenerPosiciones()
         {
             var representacion = new List<(int X, int Y)>();
@@ -89,6 +92,7 @@ namespace ProyectoFinal.Model
             return representacion;
         }
 
+        
         public string ObtenerRepresentacion()
         {
             var representacion = new List<string>();
@@ -116,6 +120,27 @@ namespace ProyectoFinal.Model
             nodos.Remove(nombre);
             return true; // Si se elimina correctamente, retorna true
         }
+        public Dictionary<string, int> ObtenerVecinos(string nombreNodo)
+        {
+            // Verificar si el nodo existe
+            if (!nodos.ContainsKey(nombreNodo))
+            {
+                throw new ArgumentException($"El nodo '{nombreNodo}' no existe en el grafo.");
+            }
+
+            // Obtener el nodo y sus adyacentes
+            Nodo nodo = nodos[nombreNodo];
+            var vecinos = new Dictionary<string, int>();
+
+            // Recorrer los adyacentes y agregarlos al diccionario
+            foreach (var adyacente in nodo.Adyacentes)
+            {
+                vecinos[adyacente.Destino.Nombre] = adyacente.Peso;
+            }
+
+            return vecinos;
+        }
+
         public void ImprimirGrafo()
         {
             foreach (var nodo in nodos.Values)
@@ -184,6 +209,73 @@ namespace ProyectoFinal.Model
 
             return true; // El cambio fue exitoso
         }
+        public (int Distancia, List<string> Ruta) Dijkstra(string origen, string destino)
+        {
+            if (!nodos.ContainsKey(origen) || !nodos.ContainsKey(destino))
+            {
+                throw new ArgumentException("El nodo de origen o destino no existe.");
+            }
+
+            var distancias = new Dictionary<string, int>();
+            var anteriores = new Dictionary<string, string?>();
+            var visitados = new HashSet<string>();
+            var colaPrioridad = new SortedSet<(int Distancia, string Nodo)>();
+
+            foreach (var nodo in nodos.Keys)
+            {
+                distancias[nodo] = int.MaxValue;
+                anteriores[nodo] = null;
+            }
+
+            distancias[origen] = 0;
+            colaPrioridad.Add((0, origen));
+
+            while (colaPrioridad.Count > 0)
+            {
+                var actual = colaPrioridad.Min.Nodo;
+                colaPrioridad.Remove(colaPrioridad.Min);
+
+                if (visitados.Contains(actual)) continue;
+                visitados.Add(actual);
+
+                if (actual == destino) break;
+
+                foreach (var (vecino, peso) in nodos[actual].Adyacentes)
+                {
+                    if (visitados.Contains(vecino.Nombre)) continue;
+
+                    int nuevaDistancia = distancias[actual] + peso;
+                    if (nuevaDistancia < distancias[vecino.Nombre])
+                    {
+                        colaPrioridad.Remove((distancias[vecino.Nombre], vecino.Nombre));
+                        distancias[vecino.Nombre] = nuevaDistancia;
+                        anteriores[vecino.Nombre] = actual;
+                        colaPrioridad.Add((nuevaDistancia, vecino.Nombre));
+                    }
+                }
+            }
+
+            // Construir la ruta
+            var ruta = new List<string>();
+            var actualNodo = destino;
+
+            while (actualNodo != null)
+            {
+                ruta.Insert(0, actualNodo);
+                actualNodo = anteriores[actualNodo];
+            }
+
+            if (ruta.Count == 0 || ruta[0] != origen) // Si no se puede llegar
+            {
+                return (int.MaxValue, new List<string>()); // No hay ruta
+            }
+
+            return (distancias[destino], ruta);
+        }
+
+
+
+
 
     }
 
