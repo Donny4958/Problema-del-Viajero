@@ -61,3 +61,5 @@ C:\Users\Dona\Documents\GitHub\Problema-del-Viajero\ProyectoFinal\bin\Debug\net8
 C:\Users\Dona\Documents\GitHub\Problema-del-Viajero\ProyectoFinal\bin\Debug\net8.0-windows\ProyectoFinal.pdb
 C:\Users\Dona\Documents\GitHub\Problema-del-Viajero\ProyectoFinal\obj\Debug\net8.0-windows\ProyectoFinal.genruntimeconfig.cache
 C:\Users\Dona\Documents\GitHub\Problema-del-Viajero\ProyectoFinal\obj\Debug\net8.0-windows\ref\ProyectoFinal.dll
+C:\Users\Dona\Documents\GitHub\Problema-del-Viajero\ProyectoFinal\obj\Debug\net8.0-windows\ProyectoFinal.Properties.Resources.resources
+C:\Users\Dona\Documents\GitHub\Problema-del-Viajero\ProyectoFinal\obj\Debug\net8.0-windows\ProyectoFinal.Resource1.resources

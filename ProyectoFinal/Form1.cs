@@ -1,4 +1,6 @@
 using ProyectoFinal.Model;
+using System.Reflection.Metadata.Ecma335;
+using System.Windows.Forms;
 namespace ProyectoFinal
 {
     public partial class Form1 : Form
@@ -8,6 +10,10 @@ namespace ProyectoFinal
         private Grafo grafoca; // Grafo costo/auto
         private Grafo grafott; // Grafo tiempo/transporte
         private Grafo grafoct; // Grafo costo/transporte
+        private float zoomFactor = 1.0f; // Factor de zoom inicial
+        private Bitmap originalImage = new Bitmap(1, 1); // Imagen vacía de 1x1 píxel
+        private Bitmap displayedImage = new Bitmap(1, 1); // Imagen vacía de 1x1 píxel
+
         public Form1()
         {
             InitializeComponent();
@@ -17,18 +23,23 @@ namespace ProyectoFinal
             grafott = new Grafo();
             grafoct = new Grafo();
             llenargrafos();
+            originalImage = Properties.Resources.Mochis; // Asignar la imagen del recurso
+            displayedImage = ResizeImage(originalImage, pictureBox2.Width, pictureBox2.Height);
         }
 
         private void ciudadToolStripMenuItem_Click(object sender, EventArgs e)
-        {            
-            Form2 form2 = new Form2(grafo,grafota,grafoca,grafott,grafoct);
+        {
+            Form2 form2 = new Form2(grafo, grafota, grafoca, grafott, grafoct);
             form2.ShowDialog(); // Ventana de ciudad            
-    }
+
+        }
 
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-          
+        { 
+            pictureBox2.Image = Properties.Resources.Mochis;
+            displayedImage = ResizeImage(originalImage, pictureBox2.Width, pictureBox2.Height);
+            pictureBox2.Image = displayedImage;
         }
 
         private void rutaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -57,7 +68,7 @@ namespace ProyectoFinal
         private void button1_Click(object sender, EventArgs e)
         {
             string grafoComoTexto = "Distancia :";// Encabezado
-            grafoComoTexto +=grafo.ObtenerRepresentacion();
+            grafoComoTexto += grafo.ObtenerRepresentacion();
             grafoComoTexto += "\n\nTiempo Auto :";
             grafoComoTexto += grafota.ObtenerRepresentacion();
             grafoComoTexto += "\n\nCosto Auto :";
@@ -68,46 +79,37 @@ namespace ProyectoFinal
             grafoComoTexto += grafoct.ObtenerRepresentacion();
             richTextBox1.Text = grafoComoTexto; // Mostrar en el TextBox
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        public void llenargrafos() {
-            grafo.AgregarNodo("a", 0, 0);
-            grafo.AgregarNodo("b", 1, 0);
-            grafo.AgregarNodo("c", 2, 0);
-            grafo.AgregarNodo("d", 3, 0);
 
-            grafota.AgregarNodo("a", 0, 0);
-            grafota.AgregarNodo("b", 1, 0);
-            grafota.AgregarNodo("c", 2, 0);
-            grafota.AgregarNodo("d", 3, 0);
+        private Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var resized = new Bitmap(width, height);
+            using (var graphics = Graphics.FromImage(resized))
+            {
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.DrawImage(image, 0, 0, width, height);
+            }
+            return resized;
+        }
 
-            grafoca.AgregarNodo("a", 0, 0);
-            grafoca.AgregarNodo("b", 1, 0);
-            grafoca.AgregarNodo("c", 2, 0);
-            grafoca.AgregarNodo("d", 3, 0);
 
-            grafott.AgregarNodo("a", 0, 0);
-            grafott.AgregarNodo("b", 1, 0);
-            grafott.AgregarNodo("c", 2, 0);
-            grafott.AgregarNodo("d", 3, 0);
 
-            grafoct.AgregarNodo("a", 0, 0);
-            grafoct.AgregarNodo("b", 1, 0);
-            grafoct.AgregarNodo("c", 2, 0);
-            grafoct.AgregarNodo("d", 3, 0);
+
+
+
+
+
+
+
+
+
+
+        public void llenargrafos()
+        {
+            todosagregarNodos("a", 0, 0);
+            todosagregarNodos("b", 1, 0);
+            todosagregarNodos("c", 2, 0);
+            todosagregarNodos("d", 3, 0);
 
             grafo.AgregarArista("a", "b", 10);
             grafo.AgregarArista("b", "c", 15);
@@ -146,7 +148,57 @@ namespace ProyectoFinal
             // Confirmar la operación
             MessageBox.Show("Nodos y conexiones creados exitosamente con pesos variables en todos los grafos.", "Operación exitosa");
         }
+        public void todosagregarNodos(string nom,int x, int y)
+        {
+            grafo.AgregarNodo(nom, x, y);
+            grafota.AgregarNodo(nom, x, y);
+            grafott.AgregarNodo(nom, x, y);
+            grafoca.AgregarNodo(nom, x, y);
+            grafoct.AgregarNodo(nom, x, y);
 
+        }
+        
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            zoomFactor += 0.1f;
+            ApplyZoom();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (zoomFactor > 0.1f) // Evitar zoom negativo o extremadamente pequeño
+            {
+                zoomFactor -= 0.1f;
+                ApplyZoom();
+            }
+        }
+        private void ApplyZoom()
+        {
+            if (originalImage != null)
+            {
+                int newWidth = (int)(originalImage.Width * zoomFactor);
+                int newHeight = (int)(originalImage.Height * zoomFactor);
+                displayedImage = ResizeImage(originalImage, newWidth, newHeight);
+
+                // Ajustar la imagen en el PictureBox
+                pictureBox2.Image = displayedImage;
+
+                // Ajustar el tamaño del PictureBox si es necesario
+                pictureBox2.SizeMode = PictureBoxSizeMode.AutoSize;
+                pictureBox2.Refresh();
+            }
+        }
     }
-    
+
 }
