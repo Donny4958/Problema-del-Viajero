@@ -23,6 +23,14 @@ namespace ProyectoFinal
         public Form2(Grafo grafoa,Grafo grafotaa, Grafo grafocaa, Grafo grafottt, Grafo grafoctt)
         {
             InitializeComponent();
+            this.BackColor = System.Drawing.Color.IndianRed;
+            this.ForeColor = Color.White;
+            button1.BackColor = Color.Green;
+            button1.ForeColor = Color.White;
+            button2.BackColor = Color.Green;
+            button2.ForeColor = Color.White;
+            button3.BackColor = Color.Green;
+            button3.ForeColor = Color.White;
             grafo = grafoa; 
             grafota = grafotaa;
             grafoca = grafocaa;

@@ -18,6 +18,13 @@ namespace ProyectoFinal
         public Form1()
         {
             InitializeComponent();
+            this.BackColor = System.Drawing.Color.IndianRed;
+            button1.BackColor = Color.Green;
+            button1.ForeColor = Color.White;
+            button2.BackColor = Color.Green;
+            button2.ForeColor = Color.White;
+            button3.BackColor = Color.Green;
+            button3.ForeColor = Color.White;
             grafo = new Grafo();
             grafota = new Grafo();
             grafoca = new Grafo();

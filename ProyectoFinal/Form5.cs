@@ -15,9 +15,16 @@ namespace ProyectoFinal
         public Form5()
         {
             InitializeComponent();
+            this.BackColor = System.Drawing.Color.IndianRed;
+            this.ForeColor = Color.White;
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }
