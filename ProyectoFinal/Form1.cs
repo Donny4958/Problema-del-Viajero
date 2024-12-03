@@ -117,52 +117,7 @@ namespace ProyectoFinal
             grafoComoTexto += grafoct.ObtenerRepresentacion();
             richTextBox1.Text = grafoComoTexto; // Mostrar en el TextBox
         }
-
-
-        public void llenargrafos()
-        {
-            todosagregarNodos("a", 200, 100);
-            todosagregarNodos("b", 300, 200);
-            todosagregarNodos("c", 400, 300);
-            todosagregarNodos("d", 500, 500);
-
-            grafo.AgregarArista("a", "b", 10);
-            grafo.AgregarArista("b", "c", 15);
-            grafo.AgregarArista("c", "d", 20);
-            grafo.AgregarArista("a", "d", 12);
-            grafo.AgregarArista("d", "c", 30);
-
-            // Tiempo en carro (grafota)
-            grafota.AgregarArista("a", "b", 8);  // Más rápido que transporte público
-            grafota.AgregarArista("b", "c", 12);
-            grafota.AgregarArista("c", "d", 18);
-            grafota.AgregarArista("a", "d", 22);
-            grafota.AgregarArista("d", "c", 27);
-
-            // Costo en carro (grafoca)
-            grafoca.AgregarArista("a", "b", 5);  // Ejemplo de costo (en gasolina)
-            grafoca.AgregarArista("b", "c", 7);
-            grafoca.AgregarArista("c", "d", 10);
-            grafoca.AgregarArista("a", "d", 12);
-            grafoca.AgregarArista("d", "c", 15);
-
-            // Tiempo en transporte público (grafott)
-            grafott.AgregarArista("a", "b", 12); // Más lento que el carro
-            grafott.AgregarArista("b", "c", 18);
-            grafott.AgregarArista("c", "d", 25);
-            grafott.AgregarArista("a", "d", 30);
-            grafott.AgregarArista("d", "c", 35);
-
-            // Costo en transporte público (grafoct)
-            grafoct.AgregarArista("a", "b", 2);  // Ejemplo de costo menor que el carro
-            grafoct.AgregarArista("b", "c", 3);
-            grafoct.AgregarArista("c", "d", 4);
-            grafoct.AgregarArista("a", "d", 5);
-            grafoct.AgregarArista("d", "c", 6);
-
-            // Confirmar la operación
-            MessageBox.Show("Nodos y conexiones creados exitosamente con pesos variables en todos los grafos.", "Operación exitosa");
-        }
+        
         public void todosagregarNodos(string nom, int x, int y)
         {
             grafo.AgregarNodo(nom, x, y);
@@ -257,6 +212,192 @@ namespace ProyectoFinal
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+        public void llenargrafos()
+        {
+            todosagregarNodos("Puente del Trebol", 0, 0);
+            todosagregarNodos("Cerro de la Memoria", 1, 0);
+            todosagregarNodos("Parque Sinaloa", 2, 0);
+            todosagregarNodos("Estadio Emilio Ibarra Almada", 3, 0);
+            todosagregarNodos("Torre San Bernardo", 4, 0);
+            todosagregarNodos("Adrian Ledesma", 5, 0);
+            todosagregarNodos("Hospital General", 6, 0);
+            todosagregarNodos("Iglesia Sagrado Corazon de Jesus", 7, 0);
+            todosagregarNodos("Universidad Autonoma de Sinaloa", 8, 0);
+            todosagregarNodos("Casa de Juan Pablo", 9, 0);
+            todosagregarNodos("Tacos El Guero", 10, 0);
+            todosagregarNodos("Parque Industrial", 11, 0);
+            todosagregarNodos("Estadio Centenario", 12, 0);
+            todosagregarNodos("Plaza Paseo Los Mochis", 13, 0);
+            todosagregarNodos("Tacos del Chavo", 14, 0);
+            todosagregarNodos("Oasis Los Mochis", 15, 0);
+            todosagregarNodos("Museo Trapiche", 16, 0);
+            todosagregarNodos("Estatua de Juarez", 17, 0);
+            todosagregarNodos("Autodromo Colina", 18, 0);
+            todosagregarNodos("Ciudad Deportiva", 19, 0);
+
+            //Puente del trebol
+            grafo.AgregarArista("Puente del Trebol", "Autodromo Colinas", 3);
+            grafo.AgregarArista("Puente del Trebol", "Universidad Autonoma de Sinaloa", 3);
+
+            //Autodromo Colinas
+            grafo.AgregarArista("Autodromo Colinas", "Cerro de la Memoria", 4);
+
+            //Cerro de la Memoria
+            grafo.AgregarArista("Cerro de la Memoria", "Emilio Ibarra Almada", 2);
+            grafo.AgregarArista("Cerro de la Memoria", "Universidad Autonoma de Sinaloa", 2);
+
+            //Emilio Ibarra Almada
+            grafo.AgregarArista("Emilio Ibarra Almada", "Ciudad Deportiva", 1);
+
+            //Adrian Ledesma
+            grafo.AgregarArista("Adrian Ledesma", "Hospital General", 8);
+
+            //UAS
+            grafo.AgregarArista("Universidad Autonoma de Sinaloa", "Casa de Juan Pablo", 2);
+            grafo.AgregarArista("Universidad Autonoma de Sinaloa", "Tacos del Chavo", 3);
+
+            //Tacos del Chavo
+            grafo.AgregarArista("Tacos del Chavo", "Tacos el Guero", 1);
+            grafo.AgregarArista("Tacos del Chavo", "Casa de Juan Pablo", 4);
+
+            //Casa Jp
+            grafo.AgregarArista("Casa de Juan Pablo", "Estadio Centenario", 8);
+
+            //Tacos el guero
+            grafo.AgregarArista("Tacos el Guero", "Oasis Los Mochis", 1);
+
+            //Ciudad deportiva
+            grafo.AgregarArista("Ciudad Deportiva", "Parque Industrial", 3);
+            grafo.AgregarArista("Ciudad Deportiva", "Oasis Los Mochis", 2);
+
+            //Parque Industrial
+            grafo.AgregarArista("Parque Industrial", "Hospital General", 4);
+            grafo.AgregarArista("Parque Industrial", "Oasis Los Mochis", 4);
+
+            //Oasis
+            grafo.AgregarArista("Oasis Los Mochis", "Museo Trapiche", 2);
+
+            //Estadio Centenario
+            grafo.AgregarArista("Estadio Centenario", "Iglesia Sagrado Corazon de Jesus", 5);
+            grafo.AgregarArista("Estadio Centenario", "Parque Sinaloa", 3);
+
+            //Parque Sinaloa
+            grafo.AgregarArista("Parque Sinaloa", "Torre San Bernardo", 0);
+
+            //Iglesia Sagrado Corazon de Jesus
+            grafo.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Torre San Bernardo", 1);
+            grafo.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Museo Trapiche", 0);
+            grafo.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Estatua de Juarez", 2);
+            grafo.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Plaza Paseo Los Mochis", 1);
+
+            //Paseo los moshis
+            grafo.AgregarArista("Plaza Paseo Los Mochis", "Estatua de Juarez", 2);
+            grafo.AgregarArista("Plaza Paseo Los Mochis", "Hospital General", 2);
+
+            //Hospital General
+            grafo.AgregarArista("Hospital General", "Estatua de Juarez", 2);
+
+
+            // Tiempo en carro (grafota)
+            grafota.AgregarArista("Puente del Trébol", "Autodromo Colinas", 7);
+            grafota.AgregarArista("Puente del Trebol", "Universidad Autonoma de Sinaloa", 7);
+
+            grafota.AgregarArista("Autodromo Colinas", "Cerro de la Memoria", 13);
+
+            grafota.AgregarArista("Cerro de la Memoria", "Emilio Ibarra Almada", 3);
+            grafota.AgregarArista("Cerro de la Memoria", "Universidad Autonoma de Sinaloa", 6);
+
+            grafota.AgregarArista("Emilio Ibarra Almada", "Ciudad Deportiva", 2);
+
+            grafota.AgregarArista("Adrian Ledesma", "Hospital General", 14);
+
+            grafota.AgregarArista("Universidad Autonoma de Sinaloa", "Casa de Juan Pablo", 5);
+            grafota.AgregarArista("Universidad Autonoma de Sinaloa", "Tacos del Chavo", 6);
+
+            grafota.AgregarArista("Tacos del Chavo", "Tacos el Guero", 3);
+            grafota.AgregarArista("Tacos del Chavo", "Casa de Juan Pablo", 8);
+
+            grafota.AgregarArista("Casa de Juan Pablo", "Estadio Centenario", 15);
+
+            grafota.AgregarArista("Tacos el Guero", "Oasis Los Mochis", 1);
+
+            grafota.AgregarArista("Ciudad Deportiva", "Parque Industrial", 5);
+            grafota.AgregarArista("Ciudad Deportiva", "Oasis Los Mochis", 5);
+
+            grafota.AgregarArista("Parque Industrial", "Hospital General", 9);
+            grafota.AgregarArista("Parque Industrial", "Oasis Los Mochis", 8);
+
+            grafota.AgregarArista("Oasis Los Mochis", "Museo Trapiche", 2);
+
+            grafota.AgregarArista("Estadio Centenario", "Iglesia Sagrado Corazon de Jesus", 10);
+            grafota.AgregarArista("Estadio Centenario", "Parque Sinaloa", 9);
+
+            grafota.AgregarArista("Parque Sinaloa", "Torre San Bernardo", 3);
+
+            grafota.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Torre San Bernardo", 2);
+            grafota.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Museo Trapiche", 1);
+            grafota.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Estatua de Juarez", 3);
+            grafota.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Plaza Paseo Los Mochis", 4);
+
+            grafota.AgregarArista("Plaza Paseo Los Mochis", "Estatua de Juarez", 5);
+            grafota.AgregarArista("Plaza Paseo Los Mochis", "Hospital General", 7);
+
+            grafota.AgregarArista("Hospital General", "Estatua de Juarez", 5);
+            // Tiempo en transporte público (grafott)
+            grafott.AgregarArista("Puente del Trébol", "Autodromo Colinas", 56);
+            grafott.AgregarArista("Puente del Trebol", "Universidad Autonoma de Sinaloa", 16);
+
+            grafott.AgregarArista("Autodromo Colinas", "Cerro de la Memoria", 19);
+
+            grafott.AgregarArista("Cerro de la Memoria", "Emilio Ibarra Almada", 5);
+            grafott.AgregarArista("Cerro de la Memoria", "Universidad Autonoma de Sinaloa", 13);
+
+            grafott.AgregarArista("Emilio Ibarra Almada", "Ciudad Deportiva", 13);
+
+            grafott.AgregarArista("Adrian Ledesma", "Hospital General", 27);
+
+            grafott.AgregarArista("Universidad Autonoma de Sinaloa", "Casa de Juan Pablo", 20);
+            grafott.AgregarArista("Universidad Autonoma de Sinaloa", "Tacos del Chavo", 12);
+
+            grafott.AgregarArista("Tacos del Chavo", "Tacos el Guero", 10);
+            grafott.AgregarArista("Tacos del Chavo", "Casa de Juan Pablo", 40);
+
+            grafott.AgregarArista("Casa de Juan Pablo", "Estadio Centenario", 27);
+
+            grafott.AgregarArista("Tacos el Guero", "Oasis Los Mochis", 8);
+
+            grafott.AgregarArista("Ciudad Deportiva", "Parque Industrial", 34);
+            grafott.AgregarArista("Ciudad Deportiva", "Oasis Los Mochis", 22);
+
+            grafott.AgregarArista("Parque Industrial", "Hospital General", 27);
+            grafott.AgregarArista("Parque Industrial", "Oasis Los Mochis", 32);
+
+            grafott.AgregarArista("Oasis Los Mochis", "Museo Trapiche", 13);
+
+            grafott.AgregarArista("Estadio Centenario", "Iglesia Sagrado Corazon de Jesus", 25);
+            grafott.AgregarArista("Estadio Centenario", "Parque Sinaloa", 36);
+
+            grafott.AgregarArista("Parque Sinaloa", "Torre San Bernardo", 5);
+
+            grafott.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Torre San Bernardo", 8);
+            grafott.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Museo Trapiche", 3);
+            grafott.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Estatua de Juarez", 16);
+            grafott.AgregarArista("Iglesia Sagrado Corazon de Jesus", "Plaza Paseo Los Mochis", 17);
+
+            grafott.AgregarArista("Plaza Paseo Los Mochis", "Estatua de Juarez", 25);
+            grafott.AgregarArista("Plaza Paseo Los Mochis", "Hospital General", 30);
+
+            grafott.AgregarArista("Hospital General", "Estatua de Juarez", 26);
+            // Confirmar la operación
+            MessageBox.Show("Nodos y conexiones creados exitosamente con pesos variables en todos los grafos.", "Operación exitosa");
+        }
+        public void agregarAristas(string a,string b, int p1, int p2, int p3, int p4, int p5) {
+        grafo.AgregarArista(a, b, p1);
+        grafota.AgregarArista(a, b, p2);
+        grafoca.AgregarArista(a, b, p3);
+        grafott.AgregarArista(a, b, p4);
+        grafoct.AgregarArista(a, b, p5);
         }
     }
 
