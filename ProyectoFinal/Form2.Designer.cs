@@ -43,26 +43,29 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(44, 74);
+            textBox1.Location = new Point(54, 95);
+            textBox1.Margin = new Padding(4, 5, 4, 5);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(680, 23);
+            textBox1.Size = new Size(970, 31);
             textBox1.TabIndex = 0;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(44, 56);
+            label1.Location = new Point(54, 65);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(118, 15);
+            label1.Size = new Size(179, 25);
             label1.TabIndex = 1;
             label1.Text = "Nombre de la ciudad";
             // 
             // button1
             // 
-            button1.Location = new Point(45, 275);
+            button1.Location = new Point(64, 458);
+            button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
-            button1.Size = new Size(169, 102);
+            button1.Size = new Size(241, 170);
             button1.TabIndex = 5;
             button1.Text = "Altas de ciudad";
             button1.UseVisualStyleBackColor = true;
@@ -70,9 +73,10 @@
             // 
             // button2
             // 
-            button2.Location = new Point(294, 275);
+            button2.Location = new Point(420, 458);
+            button2.Margin = new Padding(4, 5, 4, 5);
             button2.Name = "button2";
-            button2.Size = new Size(169, 102);
+            button2.Size = new Size(241, 170);
             button2.TabIndex = 6;
             button2.Text = "Bajas de ciudad";
             button2.UseVisualStyleBackColor = true;
@@ -80,9 +84,10 @@
             // 
             // button3
             // 
-            button3.Location = new Point(556, 275);
+            button3.Location = new Point(794, 458);
+            button3.Margin = new Padding(4, 5, 4, 5);
             button3.Name = "button3";
-            button3.Size = new Size(169, 102);
+            button3.Size = new Size(241, 170);
             button3.TabIndex = 7;
             button3.Text = "Cambio de dato";
             button3.UseVisualStyleBackColor = true;
@@ -90,43 +95,50 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(45, 138);
-            numericUpDown1.Margin = new Padding(2);
+            numericUpDown1.Location = new Point(64, 230);
+            numericUpDown1.Maximum = new decimal(new int[] { 1910, 0, 0, 0 });
+            numericUpDown1.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(126, 23);
+            numericUpDown1.Size = new Size(180, 31);
             numericUpDown1.TabIndex = 8;
+            numericUpDown1.Value = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(45, 110);
+            label2.Location = new Point(64, 183);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(14, 15);
+            label2.Size = new Size(23, 25);
             label2.TabIndex = 9;
             label2.Text = "X";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(44, 169);
+            label3.Location = new Point(63, 282);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(14, 15);
+            label3.Size = new Size(22, 25);
             label3.TabIndex = 11;
             label3.Text = "Y";
             // 
             // numericUpDown2
             // 
-            numericUpDown2.Location = new Point(44, 196);
-            numericUpDown2.Margin = new Padding(2);
+            numericUpDown2.Location = new Point(63, 327);
+            numericUpDown2.Maximum = new decimal(new int[] { 1070, 0, 0, 0 });
+            numericUpDown2.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(126, 23);
+            numericUpDown2.Size = new Size(180, 31);
             numericUpDown2.TabIndex = 10;
+            numericUpDown2.Value = new decimal(new int[] { 10, 0, 0, 0 });
             // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(781, 421);
+            ClientSize = new Size(1160, 702);
             Controls.Add(label3);
             Controls.Add(numericUpDown2);
             Controls.Add(label2);
@@ -136,6 +148,7 @@
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(textBox1);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Form2";
             Text = "Ciudad";
             Load += Form2_Load;

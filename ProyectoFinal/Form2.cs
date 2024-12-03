@@ -18,9 +18,8 @@ namespace ProyectoFinal
         private Grafo grafota; // Grafo tiempo/auto
         private Grafo grafoca; // Grafo costo/auto
         private Grafo grafott; // Grafo tiempo/transporte
-        private Grafo grafoct; // Grafo costo/transporte
-        //textBox1 Nombre ciudad
-        public Form2(Grafo grafoa,Grafo grafotaa, Grafo grafocaa, Grafo grafottt, Grafo grafoctt)
+        private Grafo grafoct; // Grafo costo/transporte                  
+        public Form2(Grafo grafoa, Grafo grafotaa, Grafo grafocaa, Grafo grafottt, Grafo grafoctt)
         {
             InitializeComponent();
             this.BackColor = System.Drawing.Color.IndianRed;
@@ -30,12 +29,12 @@ namespace ProyectoFinal
             button2.BackColor = Color.Green;
             button2.ForeColor = Color.White;
             button3.BackColor = Color.Green;
-            button3.ForeColor = Color.White;
-            grafo = grafoa; 
+            button3.ForeColor = Color.White;            
+            grafo = grafoa;
             grafota = grafotaa;
             grafoca = grafocaa;
             grafott = grafottt;
-            grafoct = grafoctt;
+            grafoct = grafoctt;            
         }
         public string NombreCiudad { get; private set; } = string.Empty;
         private void Form2_Load(object sender, EventArgs e)
@@ -63,7 +62,7 @@ namespace ProyectoFinal
             }
             //Obtener el valor de numericupdown
             int nomx = Convert.ToInt32(numericUpDown1.Value);
-            int nomy = Convert.ToInt32(numericUpDown1.Value);
+            int nomy = Convert.ToInt32(numericUpDown2.Value);
             NombreCiudad = textBox1.Text;
 
             if (grafo.Existe(NombreCiudad))
@@ -78,13 +77,13 @@ namespace ProyectoFinal
                 return;
             }
             else
-            { 
-            MessageBox.Show($"Ciudad '{NombreCiudad}' agregada correctamente.", "Alta exitosa");
-            grafo.AgregarNodo(NombreCiudad,nomx,nomy);
-            grafota.AgregarNodo(NombreCiudad,nomx,nomy);
-            grafoca.AgregarNodo(NombreCiudad,nomx,nomy);
-            grafott.AgregarNodo(NombreCiudad,nomx,nomy);
-            grafoct.AgregarNodo(NombreCiudad,nomx,nomy);
+            {
+                MessageBox.Show($"Ciudad '{NombreCiudad}' agregada correctamente.", "Alta exitosa");
+                grafo.AgregarNodo(NombreCiudad, nomx, nomy);
+                grafota.AgregarNodo(NombreCiudad, nomx, nomy);
+                grafoca.AgregarNodo(NombreCiudad, nomx, nomy);
+                grafott.AgregarNodo(NombreCiudad, nomx, nomy);
+                grafoct.AgregarNodo(NombreCiudad, nomx, nomy);
             }
         }
 
@@ -125,5 +124,14 @@ namespace ProyectoFinal
             Form6 form6 = new Form6(grafo, grafota, grafoca, grafott, grafoct);
             form6.ShowDialog(); // Venta de informacion      
         }
+
+
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

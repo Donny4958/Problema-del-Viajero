@@ -1,19 +1,18 @@
 using ProyectoFinal.Model;
 using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace ProyectoFinal
 {
     public partial class Form1 : Form
     {
-        int zoom = 1;
+        private Image originalImage; // Imagen original sin cambios
+        private float scaleFactor = 1.0f; // Factor de escala actual
         private Grafo grafo; // Grafo para manejar ciudades y rutas
         private Grafo grafota; // Grafo tiempo/auto
         private Grafo grafoca; // Grafo costo/auto
         private Grafo grafott; // Grafo tiempo/transporte
-        private Grafo grafoct; // Grafo costo/transporte
-        private float zoomFactor = 1.0f; // Factor de zoom inicial
-        private Bitmap originalImage = new Bitmap(1, 1); // Imagen vacía de 1x1 píxel
-        private Bitmap displayedImage = new Bitmap(1, 1); // Imagen vacía de 1x1 píxel
+        private Grafo grafoct; // Grafo costo/transporte        
 
         public Form1()
         {
@@ -21,16 +20,43 @@ namespace ProyectoFinal
             this.BackColor = System.Drawing.Color.IndianRed;
             button1.BackColor = Color.Green;
             button1.ForeColor = Color.White;
-            button2.BackColor = Color.Green;
-            button2.ForeColor = Color.White;
-            button3.BackColor = Color.Green;
-            button3.ForeColor = Color.White;
             grafo = new Grafo();
             grafota = new Grafo();
             grafoca = new Grafo();
             grafott = new Grafo();
             grafoct = new Grafo();
             llenargrafos();
+            trackBar1.Minimum = 1;
+            trackBar1.Maximum = 3;
+            trackBar1.Value = 1;
+            trackBar1.SmallChange = 1;
+            trackBar1.LargeChange = 1;
+            trackBar1.UseWaitCursor = false;
+            this.DoubleBuffered = true;
+            org = new PictureBox();
+            org.Image = pictureBox1.Image;
+            pictureBox1.Paint += PictureBox1_Paint;
+
+        }
+        Image Zoompicture(Image img, Size size)
+        {
+            Bitmap mp = new Bitmap(img, Convert.ToInt32(img.Width * size.Width), Convert.ToInt32(img.Height * size.Height));
+            Graphics g = Graphics.FromImage(mp);
+            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+            return mp;
+        }
+        PictureBox org;
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            if (trackBar1.Value != 0)
+            {
+                scaleFactor = trackBar1.Value;
+                pictureBox1.Image = null;
+                pictureBox1.Image = Zoompicture(org.Image, new Size(trackBar1.Value, trackBar1.Value));
+                pictureBox1.Invalidate(); // Fuerza el repintado del PictureBox
+            }
+
         }
 
         private void ciudadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -43,8 +69,14 @@ namespace ProyectoFinal
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            org=new PictureBox();
-            org.Image = pictureBox1.Image;
+            if (pictureBox1.Image != null)
+            {
+                originalImage = pictureBox1.Image;
+            }
+            else
+            {
+                MessageBox.Show("Por favor, asigna una imagen a pictureBox1 antes de iniciar.");
+            }
         }
 
         private void rutaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,6 +104,7 @@ namespace ProyectoFinal
 
         private void button1_Click(object sender, EventArgs e)
         {
+            pictureBox1.Paint += PictureBox1_Paint;
             string grafoComoTexto = "Distancia :";// Encabezado
             grafoComoTexto += grafo.ObtenerRepresentacion();
             grafoComoTexto += "\n\nTiempo Auto :";
@@ -88,10 +121,10 @@ namespace ProyectoFinal
 
         public void llenargrafos()
         {
-            todosagregarNodos("a", 0, 0);
-            todosagregarNodos("b", 1, 0);
-            todosagregarNodos("c", 2, 0);
-            todosagregarNodos("d", 3, 0);
+            todosagregarNodos("a", 200, 100);
+            todosagregarNodos("b", 300, 200);
+            todosagregarNodos("c", 400, 300);
+            todosagregarNodos("d", 500, 500);
 
             grafo.AgregarArista("a", "b", 10);
             grafo.AgregarArista("b", "c", 15);
@@ -150,29 +183,80 @@ namespace ProyectoFinal
         {
 
         }
-        Image ZoomPicture(Image img, Size size)
+        private void PictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            Bitmap bm = new Bitmap(img, Convert.ToInt32(img.Width * size.Width), Convert.ToInt32(img.Height * size.Height));
-            Graphics g = Graphics.FromImage(bm);
-            g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-            return bm;
+            DibujarNodos(e.Graphics);
+            DibujarAristas(e.Graphics); // Llamamos a la función para dibujar las aristas
         }
-        PictureBox org;
-
-        private void button2_Click(object sender, EventArgs e)
+        private void DibujarNodos(Graphics g)
         {
-            if (zoom < 10)
+            // Obtener los nodos del grafo
+            var nodos = grafo.ObtenerNodos();
+
+            // Crear un Pen con color negro y un grosor mayor para las aristas
+            Pen pen = new Pen(Color.Black, 4); // 3 es el grosor de la línea
+
+            // Dibujar cada arista (línea entre nodos)
+            foreach (var nodo in nodos.Values)
             {
-                pictureBox1.Image = ZoomPicture(pictureBox1.Image, new Size(zoom + 1, zoom + 1));
+                foreach (var adyacente in nodo.Adyacentes)
+                {
+                    // Ajustar las coordenadas de acuerdo al factor de escala
+                    float nodoX1 = nodo.X * scaleFactor;
+                    float nodoY1 = nodo.Y * scaleFactor;
+                    float nodoX2 = adyacente.Destino.X * scaleFactor;
+                    float nodoY2 = adyacente.Destino.Y * scaleFactor;
+
+                    // Dibujar la arista (línea entre nodos)
+                    g.DrawLine(pen, nodoX1, nodoY1, nodoX2, nodoY2);
+                }
+            }
+
+            // Dibujar cada nodo
+            foreach (var nodo in nodos.Values)
+            {
+                // Ajustar las coordenadas de acuerdo al factor de escala
+                float nodoX = nodo.X * scaleFactor;
+                float nodoY = nodo.Y * scaleFactor;
+
+                // Dibujar un círculo para el nodo
+                g.FillEllipse(Brushes.Blue, nodoX - 10, nodoY - 10, 20, 20);
+
+                // Dibujar el nombre del nodo
+                g.DrawString(nodo.Nombre, DefaultFont, Brushes.White, nodoX - 10, nodoY - 25);
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void DibujarAristas(Graphics g)
         {
-            if (zoom > 0)
+            // Dibujar las aristas (conexiones entre nodos)
+            foreach (var nodo in grafo.ObtenerNodos().Values)
             {
-                pictureBox1.Image = ZoomPicture(pictureBox1.Image, new Size(zoom - 1, zoom - 1));
+                foreach (var adyacente in nodo.Adyacentes)
+                {
+                    // Obtener las coordenadas de los nodos origen y destino
+                    var nodoOrigen = grafo.ObtenerNodos()[nodo.Nombre];
+                    var nodoDestino = adyacente.Destino;
+
+                    // Ajustar las coordenadas de acuerdo al factor de escala
+                    float x1 = nodoOrigen.X * scaleFactor;
+                    float y1 = nodoOrigen.Y * scaleFactor;
+                    float x2 = nodoDestino.X * scaleFactor;
+                    float y2 = nodoDestino.Y * scaleFactor;
+
+                    // Dibujar la arista (línea entre nodos)
+                    g.DrawLine(Pens.Black, x1, y1, x2, y2);
+
+                    // Dibujar el peso de la arista en el medio de la línea
+                    float midX = (x1 + x2) / 2;
+                    float midY = (y1 + y2) / 2;
+                    g.DrawString(adyacente.Peso.ToString(), DefaultFont, Brushes.Black, midX, midY);
+                }
             }
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

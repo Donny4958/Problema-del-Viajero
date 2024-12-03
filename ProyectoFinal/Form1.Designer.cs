@@ -39,12 +39,14 @@
             button1 = new Button();
             richTextBox1 = new RichTextBox();
             pictureBox1 = new PictureBox();
-            button2 = new Button();
-            button3 = new Button();
             pictureBox2 = new PictureBox();
+            panel1 = new Panel();
+            trackBar1 = new TrackBar();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
             SuspendLayout();
             // 
             // menuStrip1
@@ -53,7 +55,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { mapaToolStripMenuItem, búsquedaToolStripMenuItem, informaciónToolStripMenuItem, idiomaToolStripMenuItem, salirToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1174, 24);
+            menuStrip1.Size = new Size(1784, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -108,8 +110,8 @@
             // 
             // button1
             // 
-            button1.Location = new Point(737, 95);
-            button1.Margin = new Padding(2);
+            button1.Location = new Point(123, 290);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
             button1.Size = new Size(123, 61);
             button1.TabIndex = 1;
@@ -119,8 +121,8 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(916, 78);
-            richTextBox1.Margin = new Padding(2);
+            richTextBox1.Location = new Point(39, 219);
+            richTextBox1.Margin = new Padding(2, 2, 2, 2);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(247, 551);
             richTextBox1.TabIndex = 2;
@@ -128,54 +130,52 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Mochis;
-            pictureBox1.Location = new Point(39, 175);
-            pictureBox1.Margin = new Padding(2);
+            pictureBox1.Image = Properties.Resources.Mochis2;
+            pictureBox1.Location = new Point(2, 14);
+            pictureBox1.Margin = new Padding(2, 2, 2, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(854, 491);
+            pictureBox1.Size = new Size(1920, 1080);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(398, 95);
-            button2.Margin = new Padding(2);
-            button2.Name = "button2";
-            button2.Size = new Size(127, 61);
-            button2.TabIndex = 5;
-            button2.Text = "Zoom+";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(570, 95);
-            button3.Margin = new Padding(2);
-            button3.Name = "button3";
-            button3.Size = new Size(116, 61);
-            button3.TabIndex = 6;
-            button3.Text = "Zoom out";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.MOCHISPLANNER;
             pictureBox2.Location = new Point(39, 27);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(302, 183);
+            pictureBox2.Size = new Size(290, 156);
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
+            // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location = new Point(355, 27);
+            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1303, 853);
+            panel1.TabIndex = 8;
+            // 
+            // trackBar1
+            // 
+            trackBar1.Location = new Point(39, 816);
+            trackBar1.Margin = new Padding(2, 2, 2, 2);
+            trackBar1.Name = "trackBar1";
+            trackBar1.Size = new Size(253, 45);
+            trackBar1.TabIndex = 9;
+            trackBar1.Scroll += trackBar1_Scroll;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1174, 787);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(pictureBox1);
+            ClientSize = new Size(1784, 961);
+            Controls.Add(trackBar1);
             Controls.Add(richTextBox1);
+            Controls.Add(panel1);
             Controls.Add(button1);
             Controls.Add(menuStrip1);
             Controls.Add(pictureBox2);
@@ -187,6 +187,9 @@
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -204,8 +207,8 @@
         private Button button1;
         private RichTextBox richTextBox1;
         private PictureBox pictureBox1;
-        private Button button2;
-        private Button button3;
         private PictureBox pictureBox2;
+        private Panel panel1;
+        private TrackBar trackBar1;
     }
 }

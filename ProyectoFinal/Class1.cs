@@ -79,7 +79,20 @@ namespace ProyectoFinal.Model
         {
             return nodos;
         }
-        
+        public List<(string Origen, string Destino, int Peso)> ObtenerAristas()
+        {
+            var aristas = new List<(string, string, int)>();
+            foreach (var nodo in nodos.Values)
+            {
+                foreach (var adyacente in nodo.Adyacentes)
+                {
+                    aristas.Add((nodo.Nombre, adyacente.Destino.Nombre, adyacente.Peso));
+                }
+            }
+            return aristas;
+        }
+
+
 
 
         public List<(int X, int Y)> ObtenerPosiciones()

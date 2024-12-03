@@ -49,8 +49,12 @@
             label9 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -91,7 +95,7 @@
             // 
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton1);
-            groupBox1.Location = new Point(413, 26);
+            groupBox1.Location = new Point(1100, 25);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(153, 100);
             groupBox1.TabIndex = 4;
@@ -102,9 +106,9 @@
             // 
             radioButton2.AutoSize = true;
             radioButton2.Location = new Point(11, 58);
-            radioButton2.Margin = new Padding(2, 2, 2, 2);
+            radioButton2.Margin = new Padding(2);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(124, 19);
+            radioButton2.Size = new Size(123, 19);
             radioButton2.TabIndex = 25;
             radioButton2.Text = "Transporte publico";
             radioButton2.UseVisualStyleBackColor = true;
@@ -114,7 +118,7 @@
             radioButton1.AutoSize = true;
             radioButton1.Checked = true;
             radioButton1.Location = new Point(11, 29);
-            radioButton1.Margin = new Padding(2, 2, 2, 2);
+            radioButton1.Margin = new Padding(2);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(54, 19);
             radioButton1.TabIndex = 24;
@@ -127,7 +131,7 @@
             groupBox2.Controls.Add(radioButton5);
             groupBox2.Controls.Add(radioButton4);
             groupBox2.Controls.Add(radioButton3);
-            groupBox2.Location = new Point(599, 26);
+            groupBox2.Location = new Point(1286, 25);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(153, 111);
             groupBox2.TabIndex = 5;
@@ -138,7 +142,7 @@
             // 
             radioButton5.AutoSize = true;
             radioButton5.Location = new Point(5, 77);
-            radioButton5.Margin = new Padding(2, 2, 2, 2);
+            radioButton5.Margin = new Padding(2);
             radioButton5.Name = "radioButton5";
             radioButton5.Size = new Size(56, 19);
             radioButton5.TabIndex = 26;
@@ -150,9 +154,9 @@
             radioButton4.AutoSize = true;
             radioButton4.Checked = true;
             radioButton4.Location = new Point(5, 50);
-            radioButton4.Margin = new Padding(2, 2, 2, 2);
+            radioButton4.Margin = new Padding(2);
             radioButton4.Name = "radioButton4";
-            radioButton4.Size = new Size(66, 19);
+            radioButton4.Size = new Size(65, 19);
             radioButton4.TabIndex = 25;
             radioButton4.TabStop = true;
             radioButton4.Text = "Tiempo";
@@ -162,7 +166,7 @@
             // 
             radioButton3.AutoSize = true;
             radioButton3.Location = new Point(5, 29);
-            radioButton3.Margin = new Padding(2, 2, 2, 2);
+            radioButton3.Margin = new Padding(2);
             radioButton3.Name = "radioButton3";
             radioButton3.Size = new Size(73, 19);
             radioButton3.TabIndex = 24;
@@ -171,7 +175,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(776, 24);
+            button1.Location = new Point(1463, 23);
             button1.Name = "button1";
             button1.Size = new Size(123, 50);
             button1.TabIndex = 6;
@@ -181,7 +185,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(776, 84);
+            button2.Location = new Point(1463, 83);
             button2.Name = "button2";
             button2.Size = new Size(123, 53);
             button2.TabIndex = 7;
@@ -193,7 +197,7 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(413, 159);
+            listBox1.Location = new Point(1100, 158);
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(268, 289);
             listBox1.TabIndex = 9;
@@ -202,7 +206,7 @@
             // 
             listBox2.FormattingEnabled = true;
             listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(752, 159);
+            listBox2.Location = new Point(1439, 158);
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(77, 289);
             listBox2.TabIndex = 13;
@@ -210,7 +214,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(226, 141);
+            label3.Location = new Point(913, 140);
             label3.Name = "label3";
             label3.Size = new Size(114, 15);
             label3.TabIndex = 14;
@@ -219,7 +223,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(475, 141);
+            label4.Location = new Point(1162, 140);
             label4.Name = "label4";
             label4.Size = new Size(49, 15);
             label4.TabIndex = 15;
@@ -228,7 +232,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(752, 141);
+            label8.Location = new Point(1439, 140);
             label8.Name = "label8";
             label8.Size = new Size(62, 15);
             label8.TabIndex = 19;
@@ -237,17 +241,17 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(508, 471);
+            label9.Location = new Point(1195, 470);
             label9.Name = "label9";
-            label9.Size = new Size(53, 15);
+            label9.Size = new Size(51, 15);
             label9.TabIndex = 20;
             label9.Text = "TOTALES";
             // 
             // textBox1
             // 
             textBox1.Enabled = false;
-            textBox1.Location = new Point(211, 166);
-            textBox1.Margin = new Padding(2, 2, 2, 2);
+            textBox1.Location = new Point(898, 165);
+            textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(106, 23);
             textBox1.TabIndex = 24;
@@ -255,17 +259,37 @@
             // textBox2
             // 
             textBox2.Enabled = false;
-            textBox2.Location = new Point(581, 467);
-            textBox2.Margin = new Padding(2, 2, 2, 2);
+            textBox2.Location = new Point(1268, 466);
+            textBox2.Margin = new Padding(2);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(106, 23);
             textBox2.TabIndex = 25;
+            // 
+            // panel1
+            // 
+            panel1.AutoScroll = true;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location = new Point(32, 116);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(826, 550);
+            panel1.TabIndex = 26;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.Mochis2;
+            pictureBox1.Location = new Point(18, 42);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(1920, 1080);
+            pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // Form4
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(915, 538);
+            ClientSize = new Size(1593, 726);
+            Controls.Add(panel1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(label9);
@@ -289,6 +313,9 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -322,5 +349,7 @@
         private RadioButton radioButton3;
         private TextBox textBox1;
         private TextBox textBox2;
+        private Panel panel1;
+        private PictureBox pictureBox1;
     }
 }
