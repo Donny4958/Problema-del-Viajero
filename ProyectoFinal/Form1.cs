@@ -1,11 +1,17 @@
 using ProyectoFinal.Model;
+using System.Globalization;
 using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Globalization;
+using System.Threading;
+
 namespace ProyectoFinal
 {
     public partial class Form1 : Form
     {
+        public static int Idioma { get; set; }
+
         private Image originalImage; // Imagen original sin cambios
         private float scaleFactor = 1.0f; // Factor de escala actual
         private Grafo grafo; // Grafo para manejar ciudades y rutas
@@ -66,9 +72,24 @@ namespace ProyectoFinal
 
         }
 
+        private void AplicarIdioma()
+        {
+            mapaToolStripMenuItem.Text = Resources.StringResources.menu1;
+            rutaToolStripMenuItem.Text = Resources.StringResources.menu2;
+            ciudadToolStripMenuItem.Text = Resources.StringResources.menu3;
+            búsquedaToolStripMenuItem.Text = Resources.StringResources.menu4;
+            informaciónToolStripMenuItem.Text = Resources.StringResources.menu5;
+            idiomaToolStripMenuItem.Text = Resources.StringResources.menu6;
+            salirToolStripMenuItem.Text = Resources.StringResources.menu7;
+        }
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Idioma = 0;
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("ES-MX");
+            AplicarIdioma();
+
             if (pictureBox1.Image != null)
             {
                 originalImage = pictureBox1.Image;
@@ -117,7 +138,7 @@ namespace ProyectoFinal
             grafoComoTexto += grafoct.ObtenerRepresentacion();
             richTextBox1.Text = grafoComoTexto; // Mostrar en el TextBox
         }
-        
+
         public void todosagregarNodos(string nom, int x, int y)
         {
             grafo.AgregarNodo(nom, x, y);
@@ -125,7 +146,14 @@ namespace ProyectoFinal
             grafott.AgregarNodo(nom, x, y);
             grafoca.AgregarNodo(nom, x, y);
             grafoct.AgregarNodo(nom, x, y);
-
+        }
+        public void todosagregarAristas(string nom,string fin, int a, int b,int c,int d,int e)
+        {
+            grafo.AgregarArista(nom,fin, a);
+            grafota.AgregarArista(nom, fin, b); //tiempo auto
+            grafott.AgregarArista(nom, fin, c); //tiempo transporte
+            grafoca.AgregarArista(nom, fin, d); //costo auto
+            grafoct.AgregarArista(nom, fin, e); //costo transporte
         }
 
 
@@ -215,29 +243,45 @@ namespace ProyectoFinal
         }
         public void llenargrafos()
         {
-            todosagregarNodos("Puente del Trebol", 0, 0);
-            todosagregarNodos("Cerro de la Memoria", 1, 0);
-            todosagregarNodos("Parque Sinaloa", 2, 0);
-            todosagregarNodos("Estadio Emilio Ibarra Almada", 3, 0);
-            todosagregarNodos("Torre San Bernardo", 4, 0);
-            todosagregarNodos("Adrian Ledesma", 5, 0);
-            todosagregarNodos("Hospital General", 6, 0);
-            todosagregarNodos("Iglesia Sagrado Corazon de Jesus", 7, 0);
-            todosagregarNodos("Universidad Autonoma de Sinaloa", 8, 0);
+            todosagregarNodos("Puente del Trebol", 1150, 400);
+            todosagregarNodos("Cerro de la Memoria", 1550, 300);
+            todosagregarNodos("Parque Sinaloa", 1400, 500);
+            todosagregarNodos("Estadio Emilio Ibarra Almada", 1350, 450);
+            todosagregarNodos("Torre San Bernardo", 1280,500);
+            todosagregarNodos("Adrian Ledesma", 1300, 600);
+            todosagregarNodos("Hospital General", 1250, 550);
+            todosagregarNodos("Iglesia Sagrado Corazon de Jesus", 1400, 550);
+            todosagregarNodos("Universidad Autonoma de Sinaloa", 1150, 650);
             todosagregarNodos("Casa de Juan Pablo", 9, 0);
-            todosagregarNodos("Tacos El Guero", 10, 0);
-            todosagregarNodos("Parque Industrial", 11, 0);
-            todosagregarNodos("Estadio Centenario", 12, 0);
-            todosagregarNodos("Plaza Paseo Los Mochis", 13, 0);
-            todosagregarNodos("Tacos del Chavo", 14, 0);
-            todosagregarNodos("Oasis Los Mochis", 15, 0);
-            todosagregarNodos("Museo Trapiche", 16, 0);
-            todosagregarNodos("Estatua de Juarez", 17, 0);
-            todosagregarNodos("Autodromo Colina", 18, 0);
-            todosagregarNodos("Ciudad Deportiva", 19, 0);
-
-            //Puente del trebol
-            grafo.AgregarArista("Puente del Trebol", "Autodromo Colinas", 3);
+            todosagregarNodos("Tacos El Guero", 1300, 700);
+            todosagregarNodos("Parque Industrial", 900, 750);
+            todosagregarNodos("Estadio Centenario", 1000, 500);
+            todosagregarNodos("Plaza Paseo Los Mochis", 1250, 500);
+            todosagregarNodos("Tacos del Chavo", 1350, 620);
+            todosagregarNodos("Oasis Los Mochis", 950, 650);
+            todosagregarNodos("Museo Trapiche", 1300, 560);
+            todosagregarNodos("Estatua de Juarez", 1400, 450);
+            todosagregarNodos("Autodromo Colina", 800, 300);
+            todosagregarNodos("Ciudad Deportiva", 1150, 750);
+            todosagregarAristas("Puente del Trebol", "Cerro de la Memoria", 5, 10, 20, 20, 12);
+            todosagregarAristas("Cerro de la Memoria", "Parque Sinaloa", 3, 7, 15, 15, 10);
+            todosagregarAristas("Parque Sinaloa", "Estadio Emilio Ibarra Almada", 2, 5, 12, 10, 8);
+            todosagregarAristas("Estadio Emilio Ibarra Almada", "Torre San Bernardo", 1, 3, 8, 8, 6);
+            todosagregarAristas("Torre San Bernardo", "Adrian Ledesma", 2, 5, 10, 10, 7);
+            todosagregarAristas("Adrian Ledesma", "Hospital General", 3, 8, 15, 12, 10);
+            todosagregarAristas("Hospital General", "Iglesia Sagrado Corazon de Jesus", 2, 5, 12, 10, 8);
+            todosagregarAristas("Iglesia Sagrado Corazon de Jesus", "Universidad Autonoma de Sinaloa", 3, 8, 15, 12, 10);
+            todosagregarAristas("Universidad Autonoma de Sinaloa", "Tacos El Guero", 4, 10, 18, 15, 10);
+            todosagregarAristas("Tacos El Guero", "Parque Industrial", 5, 12, 20, 18, 15);
+            todosagregarAristas("Parque Industrial", "Estadio Centenario", 4, 10, 18, 15, 12);
+            todosagregarAristas("Estadio Centenario", "Plaza Paseo Los Mochis", 2, 5, 10, 8, 6);
+            todosagregarAristas("Plaza Paseo Los Mochis", "Tacos del Chavo", 3, 7, 12, 12, 8);
+            todosagregarAristas("Tacos del Chavo", "Oasis Los Mochis", 5, 12, 20, 18, 15);
+            todosagregarAristas("Oasis Los Mochis", "Museo Trapiche", 4, 10, 18, 15, 12);
+            todosagregarAristas("Museo Trapiche", "Estatua de Juarez", 3, 7, 12, 12, 8);
+            todosagregarAristas("Estatua de Juarez", "Autodromo Colina", 6, 15, 25, 20, 15);
+            todosagregarAristas("Autodromo Colina", "Ciudad Deportiva", 5, 12, 20, 18, 12);
+            /*grafo.AgregarArista("Puente del Trebol", "Autodromo Colinas", 3);
             grafo.AgregarArista("Puente del Trebol", "Universidad Autonoma de Sinaloa", 3);
 
             //Autodromo Colinas
@@ -389,15 +433,42 @@ namespace ProyectoFinal
             grafott.AgregarArista("Plaza Paseo Los Mochis", "Hospital General", 30);
 
             grafott.AgregarArista("Hospital General", "Estatua de Juarez", 26);
+            */
             // Confirmar la operación
             MessageBox.Show("Nodos y conexiones creados exitosamente con pesos variables en todos los grafos.", "Operación exitosa");
         }
-        public void agregarAristas(string a,string b, int p1, int p2, int p3, int p4, int p5) {
-        grafo.AgregarArista(a, b, p1);
-        grafota.AgregarArista(a, b, p2);
-        grafoca.AgregarArista(a, b, p3);
-        grafott.AgregarArista(a, b, p4);
-        grafoct.AgregarArista(a, b, p5);
+        public void agregarAristas(string a, string b, int p1, int p2, int p3, int p4, int p5)
+        {
+            grafo.AgregarArista(a, b, p1);
+            grafota.AgregarArista(a, b, p2);
+            grafoca.AgregarArista(a, b, p3);
+            grafott.AgregarArista(a, b, p4);
+            grafoct.AgregarArista(a, b, p5);
+        }
+
+        private void españolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            inglésToolStripMenuItem.Checked = false;
+            españolToolStripMenuItem.Checked = true;
+            Idioma = 0;
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("ES-MX");
+            AplicarIdioma();
+            MessageBox.Show("Idioma : Español");
+        }
+
+        private void inglésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            inglésToolStripMenuItem.Checked = true;
+            españolToolStripMenuItem.Checked = false;
+            Idioma = 1;
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("EN-US");
+            AplicarIdioma();
+            MessageBox.Show("Language : English");
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

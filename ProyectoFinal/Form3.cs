@@ -8,11 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Globalization;
+using System.Reflection.Emit;
 
 namespace ProyectoFinal
 {
     public partial class Form3 : Form
     {
+        public static int Idioma { get; set; }
+
         private Grafo grafo; // Grafo para manejar ciudades y rutas
         private Grafo grafota; // Grafo tiempo/auto
         private Grafo grafoca; // Grafo costo/auto
@@ -24,12 +29,12 @@ namespace ProyectoFinal
             InitializeComponent();
             this.BackColor = System.Drawing.Color.IndianRed;
             this.ForeColor = Color.White;
-            button1.BackColor = Color.Green;
-            button1.ForeColor = Color.White;
-            button2.BackColor = Color.Green;
-            button2.ForeColor = Color.White;
-            button3.BackColor = Color.Green;
-            button3.ForeColor = Color.White;
+            button4.BackColor = Color.Green;
+            button4.ForeColor = Color.White;
+            button5.BackColor = Color.Green;
+            button5.ForeColor = Color.White;
+            button6.BackColor = Color.Green;
+            button6.ForeColor = Color.White;
             grafo = grafoa;
             grafota = grafotaa;
             grafoca = grafocaa;
@@ -46,9 +51,29 @@ namespace ProyectoFinal
         {
 
         }
+        public void AplicarIdioma()
+        {
+            label2.Text = Resources.StringResources.lbl2;
+            label3.Text = Resources.StringResources.lbl3;
+            label4.Text = Resources.StringResources.lbl4;
+            label5.Text = Resources.StringResources.lbl5;
+            label6.Text = Resources.StringResources.lbl6;
+            label7.Text = Resources.StringResources.lbl7;
+            label8.Text = Resources.StringResources.lbl8;
+            label9.Text = Resources.StringResources.lbl9;
+            label10.Text = Resources.StringResources.lbl10;
+            label11.Text = Resources.StringResources.lbl11;
+            label12.Text = Resources.StringResources.lbl12;
+            label13.Text = Resources.StringResources.lbl13;
+            button4.Text = Resources.StringResources.btn4;
+            button5.Text = Resources.StringResources.btn5;
+            button6.Text = Resources.StringResources.btn6;
+        }
 
         private void Form3_Load(object sender, EventArgs e)
-        {
+        {            
+            AplicarIdioma();
+
             if (grafo.ContarNodos() < 2)
             {
                 MessageBox.Show("Para operar la ruta, deben existir al menos 2 nodos.", "Error");

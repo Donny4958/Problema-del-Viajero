@@ -34,9 +34,9 @@
             comboBox1 = new ComboBox();
             comboBox2 = new ComboBox();
             label5 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
             groupBox1 = new GroupBox();
             numericUpDown3 = new NumericUpDown();
             numericUpDown2 = new NumericUpDown();
@@ -114,34 +114,34 @@
             label5.TabIndex = 8;
             label5.Text = "Kms";
             // 
-            // button1
+            // button4
             // 
-            button1.Location = new Point(28, 412);
-            button1.Name = "button1";
-            button1.Size = new Size(159, 69);
-            button1.TabIndex = 9;
-            button1.Text = "Alta de la ruta";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button4.Location = new Point(28, 412);
+            button4.Name = "button4";
+            button4.Size = new Size(159, 69);
+            button4.TabIndex = 9;
+            button4.Text = "Alta de la ruta";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button1_Click;
             // 
-            // button2
+            // button5
             // 
-            button2.Location = new Point(237, 412);
-            button2.Name = "button2";
-            button2.Size = new Size(159, 69);
-            button2.TabIndex = 10;
-            button2.Text = "Baja de la ruta";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button5.Location = new Point(237, 412);
+            button5.Name = "button5";
+            button5.Size = new Size(159, 69);
+            button5.TabIndex = 10;
+            button5.Text = "Baja de la ruta";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button2_Click;
             // 
-            // button3
+            // button6
             // 
-            button3.Location = new Point(444, 412);
-            button3.Name = "button3";
-            button3.Size = new Size(159, 69);
-            button3.TabIndex = 11;
-            button3.Text = "Cambio de dato";
-            button3.UseVisualStyleBackColor = true;
+            button6.Location = new Point(444, 412);
+            button6.Name = "button6";
+            button6.Size = new Size(159, 69);
+            button6.TabIndex = 11;
+            button6.Text = "Cambio de dato";
+            button6.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -294,9 +294,9 @@
             Controls.Add(numericUpDown1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(button4);
             Controls.Add(label5);
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
@@ -326,9 +326,9 @@
         private ComboBox comboBox1;
         private ComboBox comboBox2;
         private Label label5;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button button4;
+        private Button button5;
+        private Button button6;
         private GroupBox groupBox1;
         private Label label7;
         private Label label6;

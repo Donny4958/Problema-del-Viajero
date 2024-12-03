@@ -35,6 +35,8 @@
             búsquedaToolStripMenuItem = new ToolStripMenuItem();
             informaciónToolStripMenuItem = new ToolStripMenuItem();
             idiomaToolStripMenuItem = new ToolStripMenuItem();
+            españolToolStripMenuItem = new ToolStripMenuItem();
+            inglésToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             button1 = new Button();
             richTextBox1 = new RichTextBox();
@@ -55,7 +57,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { mapaToolStripMenuItem, búsquedaToolStripMenuItem, informaciónToolStripMenuItem, idiomaToolStripMenuItem, salirToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1784, 24);
+            menuStrip1.Size = new Size(1186, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
@@ -97,9 +99,26 @@
             // 
             // idiomaToolStripMenuItem
             // 
+            idiomaToolStripMenuItem.Checked = true;
+            idiomaToolStripMenuItem.CheckState = CheckState.Checked;
+            idiomaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { españolToolStripMenuItem, inglésToolStripMenuItem });
             idiomaToolStripMenuItem.Name = "idiomaToolStripMenuItem";
             idiomaToolStripMenuItem.Size = new Size(56, 20);
             idiomaToolStripMenuItem.Text = "Idioma";
+            // 
+            // españolToolStripMenuItem
+            // 
+            españolToolStripMenuItem.Name = "españolToolStripMenuItem";
+            españolToolStripMenuItem.Size = new Size(115, 22);
+            españolToolStripMenuItem.Text = "Español";
+            españolToolStripMenuItem.Click += españolToolStripMenuItem_Click;
+            // 
+            // inglésToolStripMenuItem
+            // 
+            inglésToolStripMenuItem.Name = "inglésToolStripMenuItem";
+            inglésToolStripMenuItem.Size = new Size(115, 22);
+            inglésToolStripMenuItem.Text = "Inglés";
+            inglésToolStripMenuItem.Click += inglésToolStripMenuItem_Click;
             // 
             // salirToolStripMenuItem
             // 
@@ -110,8 +129,8 @@
             // 
             // button1
             // 
-            button1.Location = new Point(123, 290);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Location = new Point(119, 209);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(123, 61);
             button1.TabIndex = 1;
@@ -121,18 +140,19 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(39, 219);
-            richTextBox1.Margin = new Padding(2, 2, 2, 2);
+            richTextBox1.Location = new Point(38, 274);
+            richTextBox1.Margin = new Padding(2);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(247, 551);
+            richTextBox1.Size = new Size(291, 322);
             richTextBox1.TabIndex = 2;
             richTextBox1.Text = "";
+            richTextBox1.TextChanged += richTextBox1_TextChanged;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Mochis2;
             pictureBox1.Location = new Point(2, 14);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(1920, 1080);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -145,7 +165,7 @@
             pictureBox2.Image = Properties.Resources.MOCHISPLANNER;
             pictureBox2.Location = new Point(39, 27);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(290, 156);
+            pictureBox2.Size = new Size(320, 156);
             pictureBox2.TabIndex = 7;
             pictureBox2.TabStop = false;
             // 
@@ -153,16 +173,16 @@
             // 
             panel1.AutoScroll = true;
             panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(355, 27);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Location = new Point(401, 27);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1303, 853);
+            panel1.Size = new Size(680, 558);
             panel1.TabIndex = 8;
             // 
             // trackBar1
             // 
             trackBar1.Location = new Point(39, 816);
-            trackBar1.Margin = new Padding(2, 2, 2, 2);
+            trackBar1.Margin = new Padding(2);
             trackBar1.Name = "trackBar1";
             trackBar1.Size = new Size(253, 45);
             trackBar1.TabIndex = 9;
@@ -172,7 +192,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1784, 961);
+            ClientSize = new Size(1186, 649);
             Controls.Add(trackBar1);
             Controls.Add(richTextBox1);
             Controls.Add(panel1);
@@ -210,5 +230,7 @@
         private PictureBox pictureBox2;
         private Panel panel1;
         private TrackBar trackBar1;
+        private ToolStripMenuItem españolToolStripMenuItem;
+        private ToolStripMenuItem inglésToolStripMenuItem;
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
+            label14 = new Label();
+            label15 = new Label();
             comboBox1 = new ComboBox();
             comboBox2 = new ComboBox();
             groupBox1 = new GroupBox();
@@ -43,10 +43,10 @@
             button2 = new Button();
             listBox1 = new ListBox();
             listBox2 = new ListBox();
-            label3 = new Label();
-            label4 = new Label();
+            label16 = new Label();
+            label17 = new Label();
             label8 = new Label();
-            label9 = new Label();
+            label18 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
             panel1 = new Panel();
@@ -57,23 +57,23 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // label14
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(32, 31);
-            label1.Name = "label1";
-            label1.Size = new Size(113, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Ciudad donde inicia";
+            label14.AutoSize = true;
+            label14.Location = new Point(32, 31);
+            label14.Name = "label14";
+            label14.Size = new Size(113, 15);
+            label14.TabIndex = 0;
+            label14.Text = "Ciudad donde inicia";
             // 
-            // label2
+            // label15
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(30, 60);
-            label2.Name = "label2";
-            label2.Size = new Size(126, 15);
-            label2.TabIndex = 1;
-            label2.Text = "Ciudad donde termina";
+            label15.AutoSize = true;
+            label15.Location = new Point(30, 60);
+            label15.Name = "label15";
+            label15.Size = new Size(126, 15);
+            label15.TabIndex = 1;
+            label15.Text = "Ciudad donde termina";
             // 
             // comboBox1
             // 
@@ -95,7 +95,7 @@
             // 
             groupBox1.Controls.Add(radioButton2);
             groupBox1.Controls.Add(radioButton1);
-            groupBox1.Location = new Point(1100, 25);
+            groupBox1.Location = new Point(480, 101);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(153, 100);
             groupBox1.TabIndex = 4;
@@ -131,7 +131,7 @@
             groupBox2.Controls.Add(radioButton5);
             groupBox2.Controls.Add(radioButton4);
             groupBox2.Controls.Add(radioButton3);
-            groupBox2.Location = new Point(1286, 25);
+            groupBox2.Location = new Point(666, 101);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(153, 111);
             groupBox2.TabIndex = 5;
@@ -175,7 +175,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(1463, 23);
+            button1.Location = new Point(830, 98);
             button1.Name = "button1";
             button1.Size = new Size(123, 50);
             button1.TabIndex = 6;
@@ -185,7 +185,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(1463, 83);
+            button2.Location = new Point(830, 158);
             button2.Name = "button2";
             button2.Size = new Size(123, 53);
             button2.TabIndex = 7;
@@ -197,60 +197,61 @@
             // 
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(1100, 158);
+            listBox1.Location = new Point(480, 233);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(268, 289);
+            listBox1.Size = new Size(280, 289);
             listBox1.TabIndex = 9;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // listBox2
             // 
             listBox2.FormattingEnabled = true;
             listBox2.ItemHeight = 15;
-            listBox2.Location = new Point(1439, 158);
+            listBox2.Location = new Point(806, 233);
             listBox2.Name = "listBox2";
             listBox2.Size = new Size(77, 289);
             listBox2.TabIndex = 13;
             // 
-            // label3
+            // label16
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(913, 140);
-            label3.Name = "label3";
-            label3.Size = new Size(114, 15);
-            label3.TabIndex = 14;
-            label3.Text = "Medio de transporte";
+            label16.AutoSize = true;
+            label16.Location = new Point(449, 26);
+            label16.Name = "label16";
+            label16.Size = new Size(114, 15);
+            label16.TabIndex = 14;
+            label16.Text = "Medio de transporte";
             // 
-            // label4
+            // label17
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(1162, 140);
-            label4.Name = "label4";
-            label4.Size = new Size(49, 15);
-            label4.TabIndex = 15;
-            label4.Text = "Camino";
+            label17.AutoSize = true;
+            label17.Location = new Point(542, 215);
+            label17.Name = "label17";
+            label17.Size = new Size(49, 15);
+            label17.TabIndex = 15;
+            label17.Text = "Camino";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(1439, 140);
+            label8.Location = new Point(806, 215);
             label8.Name = "label8";
             label8.Size = new Size(62, 15);
             label8.TabIndex = 19;
             label8.Text = "Parametro";
             // 
-            // label9
+            // label18
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(1195, 470);
-            label9.Name = "label9";
-            label9.Size = new Size(51, 15);
-            label9.TabIndex = 20;
-            label9.Text = "TOTALES";
+            label18.AutoSize = true;
+            label18.Location = new Point(581, 539);
+            label18.Name = "label18";
+            label18.Size = new Size(51, 15);
+            label18.TabIndex = 20;
+            label18.Text = "TOTALES";
             // 
             // textBox1
             // 
             textBox1.Enabled = false;
-            textBox1.Location = new Point(898, 165);
+            textBox1.Location = new Point(434, 51);
             textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(106, 23);
@@ -259,7 +260,7 @@
             // textBox2
             // 
             textBox2.Enabled = false;
-            textBox2.Location = new Point(1268, 466);
+            textBox2.Location = new Point(654, 536);
             textBox2.Margin = new Padding(2);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(106, 23);
@@ -269,9 +270,9 @@
             // 
             panel1.AutoScroll = true;
             panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(32, 116);
+            panel1.Location = new Point(12, 96);
             panel1.Name = "panel1";
-            panel1.Size = new Size(826, 550);
+            panel1.Size = new Size(435, 406);
             panel1.TabIndex = 26;
             // 
             // pictureBox1
@@ -288,14 +289,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1593, 726);
+            ClientSize = new Size(987, 589);
             Controls.Add(panel1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
-            Controls.Add(label9);
+            Controls.Add(label18);
             Controls.Add(label8);
-            Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(label17);
+            Controls.Add(label16);
             Controls.Add(listBox2);
             Controls.Add(listBox1);
             Controls.Add(button2);
@@ -304,8 +305,8 @@
             Controls.Add(groupBox1);
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(label15);
+            Controls.Add(label14);
             Name = "Form4";
             Text = "Búsqueda de información";
             Load += Form4_Load;
@@ -322,8 +323,8 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
+        private Label label14;
+        private Label label15;
         private ComboBox comboBox1;
         private ComboBox comboBox2;
         private GroupBox groupBox1;
@@ -336,12 +337,12 @@
         private ListBox listBox4;
         private ListBox listBox5;
         private ListBox listBox6;
-        private Label label3;
-        private Label label4;
+        private Label label16;
+        private Label label17;
         private Label label6;
         private Label label7;
         private Label label8;
-        private Label label9;
+        private Label label18;
         private RadioButton radioButton2;
         private RadioButton radioButton1;
         private RadioButton radioButton5;

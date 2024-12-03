@@ -4,16 +4,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ProyectoFinal
 {
     public partial class Form2 : Form
     {
+        public static int Idioma { get; set; }
+
         private Grafo grafo; // Grafo para manejar ciudades y rutas
         private Grafo grafota; // Grafo tiempo/auto
         private Grafo grafoca; // Grafo costo/auto
@@ -37,9 +42,17 @@ namespace ProyectoFinal
             grafoct = grafoctt;            
         }
         public string NombreCiudad { get; private set; } = string.Empty;
-        private void Form2_Load(object sender, EventArgs e)
-        {
 
+        public void AplicarIdioma()
+        {
+            label1.Text = Resources.StringResources.lbl1;
+            button1.Text = Resources.StringResources.btn1;
+            button2.Text = Resources.StringResources.btn2;
+            button3.Text = Resources.StringResources.btn3;
+        }
+        private void Form2_Load(object sender, EventArgs e)
+        {                        
+            AplicarIdioma();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label3 = new Label();
+            label19 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
@@ -36,16 +36,16 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // label3
+            // label19
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 16F);
-            label3.Location = new Point(121, 181);
-            label3.Name = "label3";
-            label3.Size = new Size(88, 30);
-            label3.TabIndex = 2;
-            label3.Text = "Autores";
-            label3.Click += label3_Click;
+            label19.AutoSize = true;
+            label19.Font = new Font("Segoe UI", 16F);
+            label19.Location = new Point(121, 181);
+            label19.Name = "label19";
+            label19.Size = new Size(88, 30);
+            label19.TabIndex = 2;
+            label19.Text = "Autores";
+            label19.Click += label3_Click;
             // 
             // label4
             // 
@@ -96,16 +96,17 @@
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(label19);
             Name = "Form5";
             Text = "Información";
+            Load += Form5_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Label label3;
+        private Label label19;
         private Label label4;
         private Label label5;
         private Label label6;

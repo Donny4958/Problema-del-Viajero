@@ -9,6 +9,14 @@
       "ProyectoFinal/1.0.0": {
         "runtime": {
           "ProyectoFinal.dll": {}
+        },
+        "resources": {
+          "EN-US/ProyectoFinal.resources.dll": {
+            "locale": "EN-US"
+          },
+          "ES-MX/ProyectoFinal.resources.dll": {
+            "locale": "ES-MX"
+          }
         }
       }
     }

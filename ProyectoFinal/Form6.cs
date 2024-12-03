@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using System.Reflection.Emit;
 
 namespace ProyectoFinal
 {
     public partial class Form6 : Form
     {
+        public static int Idioma { get; set; }
+
         private Grafo grafo; // Grafo para manejar ciudades y rutas
         private Grafo grafota; // Grafo tiempo/auto
         private Grafo grafoca; // Grafo costo/auto
@@ -61,9 +67,20 @@ namespace ProyectoFinal
         {
             this.Close();
         }
+        public void AplicarIdioma()
+        {
+            label20.Text = Resources.StringResources.lbl20;
+            label21.Text = Resources.StringResources.lbl21;
+            button9.Text = Resources.StringResources.btn9;
+            button10.Text = Resources.StringResources.btn10;
+
+        }
 
         private void Form6_Load(object sender, EventArgs e)
         {
+            
+            AplicarIdioma();
+
             if (grafo.ContarNodos() < 1)
             {
                 MessageBox.Show("Para operar la ruta, deben existir al menos 1 nodo.", "Error");

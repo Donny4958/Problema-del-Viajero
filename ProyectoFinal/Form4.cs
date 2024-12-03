@@ -4,15 +4,21 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Reflection.Emit;
+
 
 namespace ProyectoFinal
 {
     public partial class Form4 : Form
     {
+        public static int Idioma { get; set; }
+
         private Grafo grafo; // Grafo para manejar ciudades y rutas
         private Grafo grafota; // Grafo tiempo/auto
         private Grafo grafoca; // Grafo costo/auto
@@ -36,8 +42,24 @@ namespace ProyectoFinal
             grafoct = grafoctt;
         }
 
-        private void Form4_Load(object sender, EventArgs e)
+        public void AplicarIdioma()
         {
+            label14.Text = Resources.StringResources.lbl2;
+            label15.Text = Resources.StringResources.lbl3;
+            label16.Text = Resources.StringResources.lbl4;
+            label17.Text = Resources.StringResources.lbl5;
+            label18.Text = Resources.StringResources.lbl6;
+            radioButton1.Text = Resources.StringResources.rb1;
+            radioButton2.Text = Resources.StringResources.rb2;
+            radioButton3.Text = Resources.StringResources.rb3;
+            radioButton4.Text = Resources.StringResources.rb4;
+            radioButton5.Text = Resources.StringResources.rb5;
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {            
+            AplicarIdioma();
+
             if (grafo.ContarNodos() < 2)
             {
                 MessageBox.Show("Para operar la ruta, deben existir al menos 2 nodos.", "Error");
@@ -164,7 +186,8 @@ namespace ProyectoFinal
                 g.FillEllipse(brush, x - 5, y - 5, 10, 10);  // El nodo es un círculo pequeño
             }
         }
-        public Grafo revisarRadios() {
+        public Grafo revisarRadios()
+        {
             if (radioButton3.Checked)
             {
                 textBox1.Text = "Distancia";
@@ -172,15 +195,16 @@ namespace ProyectoFinal
                 return grafo;
             }
             else
-            {                
+            {
 
                 if (radioButton1.Checked)
                 {
                     textBox1.Text = "Transporte Publico";
                     if (radioButton4.Checked)
-                    { 
+                    {
                         label8.Text = "Costo";
-                        return grafota; }
+                        return grafota;
+                    }
                     else
                     {
                         label8.Text = "Costo";
@@ -202,7 +226,7 @@ namespace ProyectoFinal
                     }
 
                 }
-            }            
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -262,6 +286,11 @@ namespace ProyectoFinal
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

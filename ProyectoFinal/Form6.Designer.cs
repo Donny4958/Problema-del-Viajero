@@ -28,78 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
+            button9 = new Button();
+            button10 = new Button();
             textBox1 = new TextBox();
             comboBox1 = new ComboBox();
-            label1 = new Label();
-            label2 = new Label();
+            label20 = new Label();
+            label21 = new Label();
             SuspendLayout();
             // 
-            // button1
+            // button9
             // 
-            button1.Location = new Point(41, 381);
-            button1.Name = "button1";
-            button1.Size = new Size(234, 34);
-            button1.TabIndex = 0;
-            button1.Text = "Cambiar de nombre";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            button9.Location = new Point(29, 229);
+            button9.Margin = new Padding(2, 2, 2, 2);
+            button9.Name = "button9";
+            button9.Size = new Size(164, 20);
+            button9.TabIndex = 0;
+            button9.Text = "Cambiar de nombre";
+            button9.UseVisualStyleBackColor = true;
+            button9.Click += button1_Click;
             // 
-            // button2
+            // button10
             // 
-            button2.Location = new Point(533, 381);
-            button2.Name = "button2";
-            button2.Size = new Size(112, 34);
-            button2.TabIndex = 1;
-            button2.Text = "Cerrar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button10.Location = new Point(373, 229);
+            button10.Margin = new Padding(2, 2, 2, 2);
+            button10.Name = "button10";
+            button10.Size = new Size(78, 20);
+            button10.TabIndex = 1;
+            button10.Text = "Cerrar";
+            button10.UseVisualStyleBackColor = true;
+            button10.Click += button2_Click;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(66, 149);
+            textBox1.Location = new Point(46, 89);
+            textBox1.Margin = new Padding(2, 2, 2, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(436, 31);
+            textBox1.Size = new Size(306, 23);
             textBox1.TabIndex = 2;
             // 
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(84, 55);
+            comboBox1.Location = new Point(59, 33);
+            comboBox1.Margin = new Padding(2, 2, 2, 2);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 33);
+            comboBox1.Size = new Size(129, 23);
             comboBox1.TabIndex = 3;
             // 
-            // label1
+            // label20
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(113, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(136, 25);
-            label1.TabIndex = 4;
-            label1.Text = "Nombre Actual:";
+            label20.AutoSize = true;
+            label20.Location = new Point(79, 10);
+            label20.Margin = new Padding(2, 0, 2, 0);
+            label20.Name = "label20";
+            label20.Size = new Size(91, 15);
+            label20.TabIndex = 4;
+            label20.Text = "Nombre Actual:";
             // 
-            // label2
+            // label21
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(98, 109);
-            label2.Name = "label2";
-            label2.Size = new Size(139, 25);
-            label2.TabIndex = 5;
-            label2.Text = "Nombre Nuevo:";
+            label21.AutoSize = true;
+            label21.Location = new Point(69, 65);
+            label21.Margin = new Padding(2, 0, 2, 0);
+            label21.Name = "label21";
+            label21.Size = new Size(92, 15);
+            label21.TabIndex = 5;
+            label21.Text = "Nombre Nuevo:";
             // 
             // Form6
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            ClientSize = new Size(560, 270);
+            Controls.Add(label21);
+            Controls.Add(label20);
             Controls.Add(comboBox1);
             Controls.Add(textBox1);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(button10);
+            Controls.Add(button9);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "Form6";
             Text = "Form6";
             Load += Form6_Load;
@@ -109,11 +116,11 @@
 
         #endregion
 
-        private Button button1;
-        private Button button2;
+        private Button button9;
+        private Button button10;
         private TextBox textBox1;
         private ComboBox comboBox1;
-        private Label label1;
-        private Label label2;
+        private Label label20;
+        private Label label21;
     }
 }
